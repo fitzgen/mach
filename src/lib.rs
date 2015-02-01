@@ -4,8 +4,11 @@
 extern crate libc;
 
 pub mod kern_return;
+pub mod message;
 pub mod port;
+pub mod task;
 pub mod traps;
+pub mod types;
 pub mod vm_types;
 
 #[test]
