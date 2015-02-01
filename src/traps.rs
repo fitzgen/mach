@@ -1,10 +1,15 @@
 //! This module corresponds to `mach/mach_traps.h`.
 
-use port::{mach_port_t};
+use libc::types::os::arch::c95;
+
+use kern_return::{kern_return_t};
+use port::{mach_port_name_t, mach_port_t};
 
 extern "C" {
-    /// Return a send right to the caller's task_self port.
     pub fn mach_task_self() -> mach_port_t;
+    pub fn task_for_pid(target_tport: mach_port_name_t,
+                        pid: c95::c_int,
+                        tn: *mut mach_port_name_t) -> kern_return_t;
 }
 
 #[test]
