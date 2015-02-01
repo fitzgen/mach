@@ -4,5 +4,9 @@ name = "mach"
 version = "0.0.1"
 authors = ["Nick Fitzgerald <fitzgen@gmail.com>"]
 
-description="A rust interface to the Mach 3.0 kernel that underlies OSX."
-repository="https://github.com/fitzgen/mach"
+license = "BSD"
+
+description = "A rust interface to the Mach 3.0 kernel that underlies OSX."
+repository = "https://github.com/fitzgen/mach"
+
+readme = "README.md"
