@@ -48,7 +48,7 @@ fn main() {
             println!("Did not succeed in getting task for pid {}", pid);
             println!("kern_return_t error {}", rv);
             println!("");
-            pringln!("Did you forget to run with 'sudo'? This script will");
+            println!("Did you forget to run with 'sudo'? This script will");
             println!("probably fail without it.");
             return;
         }
