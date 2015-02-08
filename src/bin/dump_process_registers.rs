@@ -1,12 +1,15 @@
 //! A script to read and dump to stdout the current register values of a
 //! process.
 
-#![allow(unstable)]
+#![feature(collections)]
+#![feature(core)]
+#![feature(io)]
+#![feature(unicode)]
 
 extern crate libc;
 extern crate mach;
 
-use std::io;
+use std::old_io;
 use std::mem;
 use std::ptr;
 
@@ -15,12 +18,15 @@ use libc::types::os::arch::c95;
 use mach::kern_return::{KERN_SUCCESS};
 use mach::message::{mach_msg_type_number_t};
 use mach::port::{mach_port_name_t};
-use mach::task::{task_threads};
+use mach::structs::{x86_thread_state64_t};
+use mach::task::{task_resume, task_suspend, task_threads};
+use mach::thread_act::{thread_get_state};
+use mach::thread_status::{x86_THREAD_STATE64};
 use mach::traps::{mach_task_self, task_for_pid};
 use mach::types::{task_t, thread_act_array_t};
 
 fn read_int() -> Result<c95::c_int, ()> {
-    let mut stdin = io::stdin();
+    let mut stdin = old_io::stdin();
     let line = stdin.read_line().ok().unwrap();
     let mut value : c95::c_int = 0;
     for c in line.chars().take_while(|&c| c != '\n') {
@@ -31,6 +37,17 @@ fn read_int() -> Result<c95::c_int, ()> {
         }
     }
     return Ok(value);
+}
+
+fn resume(task: task_t) {
+    unsafe {
+        let kret = task_resume(task);
+        if kret != KERN_SUCCESS {
+            println!("Did not succeed in resuming task.");
+            println!("kern_return_t error {}", kret);
+            panic!();
+        }
+    }
 }
 
 fn main() {
@@ -62,6 +79,15 @@ fn main() {
 
     println!("task = 0x{:x}", &task);
 
+    unsafe {
+        let kret = task_suspend(task as task_t);
+        if kret != KERN_SUCCESS {
+            println!("Did not succeed in suspending task.");
+            println!("kern_return_t error {}", kret);
+            return;
+        }
+    }
+
 	let thread_list : thread_act_array_t = ptr::null_mut();
 	let thread_count : mach_msg_type_number_t = 0;
     unsafe {
@@ -71,11 +97,33 @@ fn main() {
         if kret != KERN_SUCCESS {
             println!("Did not succeed in getting task's threads");
             println!("kern_return_t error {}", kret);
+            resume(task as task_t);
             return;
         }
     }
 
     println!("Task is running {} threads", &thread_count);
 
+    unsafe {
+        let threads = Vec::from_raw_buf(thread_list, thread_count as usize);
+        let state = x86_thread_state64_t::new();
+        let state_count = x86_thread_state64_t::count();
+        for (idx, &thread) in threads.iter().enumerate() {
+            println!("Thread {}:", idx);
+            let kret = thread_get_state(thread,
+                                        x86_THREAD_STATE64,
+                                        mem::transmute(&state),
+                                        mem::transmute(&state_count));
+            if kret != KERN_SUCCESS {
+                println!("Did not succeed in getting task's thread state");
+                println!("kern_return_t error {}", kret);
+                continue;
+            }
+
+            println!("{:?}", state);
+        }
+    }
+
+    resume(task as task_t);
     println!("Success!");
 }
