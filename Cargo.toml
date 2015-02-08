@@ -1,7 +1,7 @@
 [package]
 
 name = "mach"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["Nick Fitzgerald <fitzgen@gmail.com>"]
 
 license = "BSD-2-Clause"
