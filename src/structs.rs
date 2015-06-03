@@ -7,6 +7,7 @@ use libc::types::os::arch::c95;
 use message::{mach_msg_type_number_t};
 
 #[repr(C)]
+#[derive(Clone)]
 #[derive(Copy)]
 #[derive(Debug)]
 pub struct x86_thread_state64_t {

@@ -1,15 +1,10 @@
 //! A script to read and dump to stdout the current register values of a
 //! process.
 
-#![feature(collections)]
-#![feature(core)]
-#![feature(io)]
-#![feature(unicode)]
-
 extern crate libc;
 extern crate mach;
 
-use std::old_io;
+use std::io;
 use std::mem;
 use std::ptr;
 
@@ -25,10 +20,15 @@ use mach::thread_status::{x86_THREAD_STATE64};
 use mach::traps::{mach_task_self, task_for_pid};
 use mach::types::{task_t, thread_act_array_t};
 
+use std::io::prelude::*;
+
 fn read_int() -> Result<c95::c_int, ()> {
-    let mut stdin = old_io::stdin();
-    let line = stdin.read_line().ok().unwrap();
+    let mut stdin = io::stdin();
+    let mut line = String::new();
+
+    stdin.read_line(&mut line).ok().unwrap();
     let mut value : c95::c_int = 0;
+
     for c in line.chars().take_while(|&c| c != '\n') {
         if let Some(d) = c.to_digit(10) {
             value = value * 10 + (d as c95::c_int);
@@ -52,6 +52,8 @@ fn resume(task: task_t) {
 
 fn main() {
     print!("Enter pid: ");
+    io::stdout().flush().ok();
+
     let pid = match read_int() {
         Ok(v) => v,
         Err(_) => {
@@ -105,7 +107,7 @@ fn main() {
     println!("Task is running {} threads", &thread_count);
 
     unsafe {
-        let threads = Vec::from_raw_buf(thread_list, thread_count as usize);
+        let threads = Vec::from_raw_parts(thread_list, thread_count as usize, thread_count as usize);
         let state = x86_thread_state64_t::new();
         let state_count = x86_thread_state64_t::count();
         for (idx, &thread) in threads.iter().enumerate() {
