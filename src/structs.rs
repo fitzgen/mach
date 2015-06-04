@@ -8,7 +8,6 @@ use message::{mach_msg_type_number_t};
 
 #[repr(C)]
 #[derive(Clone)]
-#[derive(Copy)]
 #[derive(Debug)]
 pub struct x86_thread_state64_t {
 	__rax: u64,
