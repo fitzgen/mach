@@ -6,7 +6,7 @@ authors = ["Nick Fitzgerald <fitzgen@gmail.com>", "David Cuddeback <david.cuddeb
 
 license = "BSD-2-Clause"
 
-description = "A rust interface to the Mach 3.0 kernel that underlies OSX."
+description = "A Rust interface to the Mach 3.0 kernel that underlies OSX."
 repository = "https://github.com/fitzgen/mach"
 
 readme = "README.md"
