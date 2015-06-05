@@ -16,6 +16,6 @@ extern "C" {
 fn mach_task_self_sanity_test() {
     unsafe {
         let this_task = mach_task_self();
-        println!("{:p}", this_task);
+        println!("{:?}", this_task);
     }
 }

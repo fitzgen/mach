@@ -3,6 +3,8 @@
 
 extern crate libc;
 
+pub mod boolean;
+pub mod clock_types;
 pub mod kern_return;
 pub mod message;
 pub mod port;
