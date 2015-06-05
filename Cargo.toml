@@ -2,7 +2,7 @@
 
 name = "mach"
 version = "0.0.2"
-authors = ["Nick Fitzgerald <fitzgen@gmail.com>"]
+authors = ["Nick Fitzgerald <fitzgen@gmail.com>", "David Cuddeback <david.cuddeback@gmail.com>"]
 
 license = "BSD-2-Clause"
 
