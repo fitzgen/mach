@@ -23,7 +23,7 @@ use mach::types::{task_t, thread_act_array_t};
 use std::io::prelude::*;
 
 fn read_int() -> Result<c95::c_int, ()> {
-    let mut stdin = io::stdin();
+    let stdin = io::stdin();
     let mut line = String::new();
 
     stdin.read_line(&mut line).ok().unwrap();
