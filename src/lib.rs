@@ -15,7 +15,3 @@ pub mod thread_status;
 pub mod traps;
 pub mod types;
 pub mod vm_types;
-
-#[test]
-fn it_works() {
-}
