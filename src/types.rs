@@ -1,7 +1,5 @@
 //! This module corresponds to `mach/mach_types.h`
 
-use libc::types::os::arch::c95;
-
 use port::{mach_port_t};
 
 pub type task_t                  = mach_port_t;
@@ -84,5 +82,5 @@ pub const SEMAPHORE_NULL:     semaphore_t     = 0;
 pub const LOCK_SET_NULL:      lock_set_t      = 0;
 pub const LEDGER_NULL:        ledger_t        = 0;
 pub const ALARM_NULL:         alarm_t         = 0;
-pub const CLOCK_NULL:         c95::clock_t    = 0;
+pub const CLOCK_NULL:         ::libc::clock_t = 0;
 pub const UND_SERVER_NULL:    UNDServerRef    = 0;

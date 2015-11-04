@@ -2,8 +2,6 @@
 
 use std::mem;
 
-use libc::types::os::arch::c95;
-
 use message::{mach_msg_type_number_t};
 
 #[repr(C)]
@@ -61,7 +59,7 @@ impl x86_thread_state64_t {
     }
 
     pub fn count() -> mach_msg_type_number_t {
-        (mem::size_of::<x86_thread_state64_t>() / mem::size_of::<c95::c_int>())
+        (mem::size_of::<x86_thread_state64_t>() / mem::size_of::<::libc::c_int>())
         as mach_msg_type_number_t
     }
 }

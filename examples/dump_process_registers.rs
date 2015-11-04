@@ -8,8 +8,6 @@ use std::io;
 use std::mem;
 use std::ptr;
 
-use libc::types::os::arch::c95;
-
 use mach::kern_return::{KERN_SUCCESS};
 use mach::message::{mach_msg_type_number_t};
 use mach::port::{mach_port_name_t};
@@ -22,16 +20,16 @@ use mach::types::{task_t, thread_act_array_t};
 
 use std::io::prelude::*;
 
-fn read_int() -> Result<c95::c_int, ()> {
+fn read_int() -> Result<::libc::c_int, ()> {
     let stdin = io::stdin();
     let mut line = String::new();
 
     stdin.read_line(&mut line).ok().unwrap();
-    let mut value : c95::c_int = 0;
+    let mut value : ::libc::c_int = 0;
 
     for c in line.chars().take_while(|&c| c != '\n') {
         if let Some(d) = c.to_digit(10) {
-            value = value * 10 + (d as c95::c_int);
+            value = value * 10 + (d as ::libc::c_int);
         } else {
             return Err(());
         }

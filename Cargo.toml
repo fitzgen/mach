@@ -12,4 +12,4 @@ repository = "https://github.com/fitzgen/mach"
 readme = "README.md"
 
 [dependencies]
-libc = "0.1.1"
+libc = "0.2"

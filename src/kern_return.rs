@@ -1,9 +1,7 @@
 //! This module corresponds to `mach/kern_return.h` and
 //! `mach/i386/kern_return.h`.
 
-use libc::types::os::arch::c95;
-
-pub type kern_return_t = c95::c_int;
+pub type kern_return_t = ::libc::c_int;
 
 pub const KERN_SUCCESS : kern_return_t = 0;
 pub const KERN_INVALID_ADDRESS : kern_return_t = 1;
