@@ -8,7 +8,7 @@ pub type clock_attr_t = *mut ::libc::c_int;
 pub type clock_res_t = ::libc::c_int;
 
 #[repr(C)]
-struct mach_timespec {
+pub struct mach_timespec {
     tv_sec: ::libc::c_uint,
     tv_nsec: clock_res_t
 }
