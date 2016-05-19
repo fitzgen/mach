@@ -2,13 +2,11 @@
 
 use vm_types::{natural_t};
 
-#[repr(C)]
 pub type mach_port_name_t = natural_t;
 
 #[repr(C)]
-struct ipc_port;
+pub struct ipc_port;
 
-#[repr(C)]
 pub type ipc_port_t = *mut ipc_port;
 
 pub type mach_port_t = ::libc::c_uint;
