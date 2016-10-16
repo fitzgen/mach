@@ -18,4 +18,5 @@ pub mod types;
 pub mod vm_behavior;
 pub mod vm_inherit;
 pub mod vm_prot;
+pub mod vm_region;
 pub mod vm_types;
