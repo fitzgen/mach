@@ -14,5 +14,6 @@ pub mod thread_act;
 pub mod thread_status;
 pub mod traps;
 pub mod types;
+pub mod vm_inherit;
 pub mod vm_prot;
 pub mod vm_types;
