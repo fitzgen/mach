@@ -19,6 +19,7 @@ pub mod vm_attributes;
 pub mod vm_behavior;
 pub mod vm_inherit;
 pub mod vm_prot;
+pub mod vm_purgable;
 pub mod vm_region;
 pub mod vm_sync;
 pub mod vm_types;
