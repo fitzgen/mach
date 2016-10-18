@@ -23,5 +23,6 @@ pub mod vm_page_size;
 pub mod vm_prot;
 pub mod vm_purgable;
 pub mod vm_region;
+pub mod vm_statistics;
 pub mod vm_sync;
 pub mod vm_types;

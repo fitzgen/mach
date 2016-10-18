@@ -146,13 +146,14 @@ extern "C" {
 fn mach_vm_allocate_sanity_test() {
     use kern_return::*;
     use traps::mach_task_self;
+    use vm_statistics::VM_FLAGS_ANYWHERE;
 
     unsafe {
         let size = 0x100;
         let task = mach_task_self();
 
         let mut address: mach_vm_address_t = 0;
-        assert_eq!(mach_vm_allocate(task, &mut address, size, 1), KERN_SUCCESS);
+        assert_eq!(mach_vm_allocate(task, &mut address, size, VM_FLAGS_ANYWHERE), KERN_SUCCESS);
         println!("0x{:x}", address);
         assert_eq!(mach_vm_deallocate(task, address, size), KERN_SUCCESS);
     }
