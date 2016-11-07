@@ -6,6 +6,7 @@ extern crate libc;
 pub mod boolean;
 pub mod clock_types;
 pub mod kern_return;
+pub mod mach_port;
 pub mod memory_object_types;
 pub mod message;
 pub mod port;
