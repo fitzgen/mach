@@ -1,3 +1,11 @@
 language: rust
+rust:
+  - 1.8.0
+  - beta
+  - nightly
 os:
   - osx
+
+script:
+  - cargo build
+  - cargo test
