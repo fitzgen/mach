@@ -11,6 +11,7 @@ pub type mach_vm_size_t    = u64;
 pub type vm_map_offset_t   = u64;
 pub type vm_map_address_t  = u64;
 pub type vm_map_size_t     = u64;
+pub type vm_map_t          = ::port::mach_port_t;
 pub type vm_offset_t       = ::libc::uintptr_t;
 pub type vm_size_t         = ::libc::uintptr_t;
 
