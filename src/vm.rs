@@ -102,11 +102,10 @@ extern "C" {
                          out: *mut vm_prot_t,
                          inheritance: vm_inherit_t) -> kern_return_t;
 
-    // TODO: Implement 'vm_page.h' (contains definition for vm_map_t)
-    //pub fn mach_vm_page_query(target_map: vm_map_t,
-    //                          offset: mach_vm_offset_t,
-    //                          disposition: *mut integer_t,
-    //                          ref_count: *mut integer_t) -> kern_return_t;
+    pub fn mach_vm_page_query(target_map: vm_map_t,
+                              offset: mach_vm_offset_t,
+                              disposition: *mut integer_t,
+                              ref_count: *mut integer_t) -> kern_return_t;
 
     pub fn mach_vm_region_recurse(target_task: vm_task_entry_t,
                                   address: *mut mach_vm_address_t,
@@ -129,6 +128,13 @@ extern "C" {
                                   permission: vm_prot_t,
                                   object_handle: *mut mem_entry_name_port_t,
                                   parent_handle: mem_entry_name_port_t) -> kern_return_t;
+
+    pub fn mach_make_memory_entry_64(target_task: vm_map_t,
+                                     size: *mut memory_object_size_t,
+                                     offset: memory_object_offset_t,
+                                     permission: vm_prot_t,
+                                     object_handle: *mut mach_port_t,
+                                     parent_entry: mem_entry_name_port_t) -> kern_return_t;
 
     pub fn mach_vm_purgable_control(target_task: vm_task_entry_t,
                                     address: mach_vm_address_t,
