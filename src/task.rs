@@ -1,8 +1,11 @@
 //! This module corresponds to `mach/task.defs`.
 
+use libc::c_int;
+use libc::uintptr_t;
 use kern_return::{kern_return_t};
 use message::{mach_msg_type_number_t};
 use port::{mach_port_t};
+use task_info::{task_basic_info, task_basic_info_t};
 use types::{task_t, thread_act_array_t};
 
 pub type task_special_port_t = ::std::os::raw::c_int;
@@ -21,4 +24,10 @@ extern "C" {
     pub fn task_threads(target_task: task_t,
                         act_list: *mut thread_act_array_t,
                         act_list_cnt: *mut mach_msg_type_number_t) -> kern_return_t;
+    pub fn task_info(target_task: task_t,
+                        flavor: c_int,
+                        //task_info: task_basic_info_t,
+                        // uintptr_t type
+                        task_info: uintptr_t,
+                        task_info_count: *mut mach_msg_type_number_t) -> kern_return_t;
 }
