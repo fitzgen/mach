@@ -8,8 +8,8 @@ const TIME_MICROS_MAX: integer_t = 1000000;
 #[repr(C)]
 #[repr(packed)]
 pub struct time_value {
-  seconds: integer_t,
-  microseconds: integer_t
+  pub seconds: integer_t,
+  pub microseconds: integer_t
 }
 pub type time_value_t = time_value;
 
