@@ -5,7 +5,6 @@ use libc::uintptr_t;
 use kern_return::{kern_return_t};
 use message::{mach_msg_type_number_t};
 use port::{mach_port_t};
-use task_info::{task_basic_info, task_basic_info_t};
 use types::{task_t, thread_act_array_t};
 
 pub type task_special_port_t = ::std::os::raw::c_int;

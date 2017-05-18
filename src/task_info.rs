@@ -1,6 +1,7 @@
 //! This module corresponds to `mach/task_info.h`.
 
 use libc::{c_int};
+use kern_return::kern_return_t;
 use message::{mach_msg_type_number_t};
 use policy::{policy_t};
 use time_value::{time_value_t};
@@ -25,17 +26,18 @@ pub const TASK_BASIC_INFO_COUNT: mach_msg_type_number_t = 10;
 #[cfg(not(target_pointer_width = "64"))]
 pub const TASK_BASIC_INFO_COUNT: mach_msg_type_number_t = 8;
 
+pub const MIG_ARRAY_TOO_LARGE: kern_return_t = -307;
 
 #[derive(Debug)]
 #[repr(C)]
 #[repr(packed)]
 pub struct task_basic_info {
-  suspend_count: integer_t,
-  virtual_size: vm_size_t,
-  resident_size: vm_size_t,
-  user_time: time_value_t,
-  system_time: time_value_t,
-  policy: policy_t
+  pub suspend_count: integer_t,
+  pub virtual_size: vm_size_t,
+  pub resident_size: vm_size_t,
+  pub user_time: time_value_t,
+  pub system_time: time_value_t,
+  pub policy: policy_t
 }
 pub type task_basic_info_t = *mut task_basic_info;
 
@@ -56,14 +58,14 @@ impl task_basic_info {
 #[repr(C)]
 #[repr(packed)]
 pub struct task_events_info {
-  faults: integer_t,
-  pageins: integer_t,
-  cow_faults: integer_t,
-  messages_sent: integer_t,
-  messages_received: integer_t,
-  syscalls_mach: integer_t,
-  syscalls_unix: integer_t,
-  csw: integer_t
+  pub faults: integer_t,
+  pub pageins: integer_t,
+  pub cow_faults: integer_t,
+  pub messages_sent: integer_t,
+  pub messages_received: integer_t,
+  pub syscalls_mach: integer_t,
+  pub syscalls_unix: integer_t,
+  pub csw: integer_t
 }
 pub type task_events_info_t = *mut task_events_info;
 
@@ -103,8 +105,6 @@ impl task_thread_times_info {
 #[cfg(test)]
 mod tests {
   use std::mem::size_of;
-
-  use libc::c_int;
 
   use message::{mach_msg_type_number_t};
   use task_info;

@@ -43,7 +43,6 @@ pub fn time_value_add(result: &mut time_value_t, addend: &time_value_t) {
 mod tests {
   use time_value::{
     time_value,
-    time_value_t,
     time_value_add_usec,
     time_value_add
   };
