@@ -86,8 +86,8 @@ impl task_events_info {
 #[repr(C)]
 #[repr(packed)]
 pub struct task_thread_times_info {
-  user_time: time_value_t,
-  system_time: time_value_t
+  pub user_time: time_value_t,
+  pub system_time: time_value_t
 }
 pub type task_thread_times_info_t = *mut task_thread_times_info;
 
