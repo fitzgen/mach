@@ -13,8 +13,8 @@ pub struct time_value {
 }
 pub type time_value_t = time_value;
 
-impl Default for time_value_t {
-  fn default() -> time_value {
+impl time_value_t {
+  pub fn new() -> time_value {
     time_value {
       seconds: 0,
       microseconds: 0
@@ -50,21 +50,21 @@ mod tests {
 
   #[test]
   fn check_time_value_add_usec() {
-    let mut t_val = time_value::default();
+    let mut t_val = time_value::new();
     time_value_add_usec(&mut t_val, 900);
     assert!(t_val.seconds == 0 && t_val.microseconds == 900);
   }
 
   #[test]
   fn check_time_value_add_usec_over() {
-    let mut t_val = time_value::default();
+    let mut t_val = time_value::new();
     time_value_add_usec(&mut t_val, 1000001);
     assert!(t_val.seconds == 1 && t_val.microseconds == 1);
   }
 
   #[test]
   fn check_time_value_add() {
-    let mut t_val = time_value::default();
+    let mut t_val = time_value::new();
     let t_val_other = time_value { seconds: 3, microseconds: 100 };
     time_value_add(&mut t_val, &t_val_other);
     assert!(t_val.seconds == 3 && t_val.microseconds == 100)

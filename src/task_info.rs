@@ -39,14 +39,14 @@ pub struct task_basic_info {
 }
 pub type task_basic_info_t = *mut task_basic_info;
 
-impl Default for task_basic_info {
-  fn default() -> task_basic_info {
+impl task_basic_info {
+  pub fn new () -> task_basic_info {
     task_basic_info {
       suspend_count: 0,
       virtual_size: 0,
       resident_size: 0,
-      user_time: time_value_t::default(),
-      system_time: time_value_t::default(),
+      user_time: time_value_t::new(),
+      system_time: time_value_t::new(),
       policy: 0
     }
   }
@@ -67,8 +67,8 @@ pub struct task_events_info {
 }
 pub type task_events_info_t = *mut task_events_info;
 
-impl Default for task_events_info {
-  fn default() -> task_events_info {
+impl task_events_info {
+  pub fn new() -> task_events_info {
     task_events_info {
       faults: 0,
       pageins: 0,
@@ -91,11 +91,11 @@ pub struct task_thread_times_info {
 }
 pub type task_thread_times_info_t = *mut task_thread_times_info;
 
-impl Default for task_thread_times_info {
-  fn default() -> task_thread_times_info {
+impl task_thread_times_info {
+  pub fn new() -> task_thread_times_info {
     task_thread_times_info {
-      user_time: time_value_t::default(),
-      system_time: time_value_t::default()
+      user_time: time_value_t::new(),
+      system_time: time_value_t::new()
     }
   }
 }

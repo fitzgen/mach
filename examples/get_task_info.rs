@@ -24,7 +24,7 @@ use mach::traps::{mach_task_self};
 fn main() {
   println!("");
   println!("Getting information about the current task...");
-  let mut basic_info = task_basic_info::default();
+  let mut basic_info = task_basic_info::new();
   let basic_info_ptr = (&mut basic_info as task_basic_info_t) as libc::uintptr_t;
   let mut count = TASK_BASIC_INFO_COUNT;
   let kernal_response = unsafe {
@@ -40,7 +40,7 @@ fn main() {
   println!("--");
 
   println!("Getting information about the current task events...");
-  let mut event_info = task_events_info::default();
+  let mut event_info = task_events_info::new();
   let event_info_ptr = (&mut event_info as task_events_info_t) as libc::uintptr_t;
   let mut task_event_count = TASK_EVENTS_INFO_COUNT;
   let kernal_response = unsafe {
@@ -56,7 +56,7 @@ fn main() {
   println!("--");
 
   println!("Getting information about the current task thread times...");
-  let mut thread_times = task_thread_times_info::default();
+  let mut thread_times = task_thread_times_info::new();
   let thread_times_ptr = (&mut thread_times as task_thread_times_info_t) as libc::uintptr_t;
   let mut thread_times_count = TASK_THREAD_TIMES_INFO_COUNT;
   let kernal_response = unsafe {
