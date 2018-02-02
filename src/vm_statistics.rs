@@ -36,6 +36,7 @@ pub const VM_MEMORY_APPLICATION_SPECIFIC_16: ::libc::c_uint = 255;
 
 pub const VM_FLAGS_FIXED: ::libc::c_int    = 0x0;
 pub const VM_FLAGS_ANYWHERE: ::libc::c_int = 0x1;
+pub const VM_FLAGS_OVERWRITE: ::libc::c_int = 0x4000;
 
 pub struct vm_statistics {
     pub free_count: integer_t,
