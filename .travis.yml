@@ -1,11 +1,36 @@
 language: rust
-rust:
-  - 1.11.0
-  - beta
-  - nightly
-os:
-  - osx
+
+matrix:
+  fast_finish: true
+  include:
+    - env: TARGET=x86_64-apple-darwin
+      rust: 1.11.0
+      os: osx
+    - env: TARGET=x86_64-apple-darwin
+      rust: beta
+      os: osx
+    - env: TARGET=x86_64-apple-darwin
+      rust: nightly
+      os: osx
+    - env: TARGET=i686-apple-darwin
+      rust: 1.11.0
+      os: osx
+    - env: TARGET=i686-apple-darwin
+      rust: beta
+      os: osx
+    - env: TARGET=i686-apple-darwin
+      rust: nightly
+      os: osx
+    - env: RUSTFMT
+      rust: nightly
+      before_script:
+        - rustup component add rustfmt-preview
+      script:
+        - cargo fmt -- --write-mode=diff
+  allow_failures:
+    - env: RUSTFMT
 
 script:
-  - cargo build
-  - cargo test
+  - rustup target add $TARGET || true
+  - cargo build --target $TARGET
+  - cargo test --target $TARGET
