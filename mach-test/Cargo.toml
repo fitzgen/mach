@@ -9,4 +9,4 @@ mach = { path = "../" }
 libc = "0.2"
 
 [build-dependencies]
-ctest = { git = "https://github.com/gnzlbg/ctest", branch = "fix_bug" }
+ctest = { git = "https://github.com/alexcrichton/ctest" }
