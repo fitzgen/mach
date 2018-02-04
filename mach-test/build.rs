@@ -61,8 +61,30 @@ fn main() {
             "pmap_statistics" |
 
             // FIXME: not #[repr(C)]
-            "task_dyld_info"
+            "task_dyld_info" |
 
+            // FIXME (x86_64): wrong type offsets, field types, etc.
+            // * size: rust: 40 (0x28) != c 36 (0x24)
+            // * align: rust: 8 (0x8) != c 4 (0x4)
+            "vm_region_basic_info_64" |
+
+            // FIXME: bad field offsets, types, etc
+            // * i686: size: rust: 64 (0x40) != c 68 (0x44)
+            // * x86_64:
+            //   * size: rust: 72 (0x48) != c 68 (0x44)
+            //   * align: rust: 8 (0x8) != c 4 (0x4)
+            "vm_region_submap_info_64" |
+
+            // FIXME (x86_64):
+            // * size: rust: 56 (0x38) != c 48 (0x30)
+            // * align: rust: 8 (0x8) != c 4 (0x4)
+            "vm_region_submap_short_info_64" |
+
+            // FIXME (x86_64): align: rust: 8 (0x8) != c 4 (0x4)
+            "mach_vm_read_entry" |
+
+            // FIXME: size: rust: 32 (0x20) != c 36 (0x24)
+            "vm_region_extended_info"
             => true,
             _ => false,
         }
@@ -79,7 +101,40 @@ fn main() {
             "task_name_t" |
 
             // FIXME: removed since MacOSX 10.3.9:
-            "pmap_statistics_t"
+            "pmap_statistics_t" |
+
+            // FIXME (i686): size: rust: 4 (0x4) != c 8 (0x8)
+            "user_addr_t"|
+
+            // FIXME (686): align: rust: 4 (0x4) != c 8 (0x8)
+            "bad user_addr_t" |
+
+            // FIXME (x86_64):
+            // * size: rust: 40 (0x28) != c 36 (0x24)
+            // * align: rust: 8 (0x8) != c 4 (0x4)
+            "vm_region_basic_info_data_64_t" |
+
+            // FIXME:
+            // * i686: size: rust: 64 (0x40) != c 68 (0x44)
+            // * x86_64:
+            //   * size: rust: 72 (0x48) != c 68 (0x44)
+            //   * align: rust: 8 (0x8) != c 4 (0x4)
+            "vm_region_submap_info_data_64_t"|
+
+            // FIXME: size: rust: 32 (0x20) != c 36 (0x24)
+            "vm_region_extended_info_data_t" |
+
+            // FIXME (x86_64): field types, offsets, etc.
+            // * size: rust: 56 (0x38) != c 48 (0x30)
+            // * align: rust: 8 (0x8) != c 4 (0x4)
+            "vm_region_submap_short_info_data_64_t" |
+
+            // FIXME (x86_64): align: rust: 8 (0x8) != c 4 (0x4)
+            "mach_vm_read_entry_t" |
+
+            // FIXME: size: rust: 48 (0x30) != c 60 (0x3c)
+            "vm_statistics_data_t"
+
                 => true,
             _ => false,
         }
@@ -115,7 +170,16 @@ fn main() {
     cfg.skip_const(|s| {
         match s {
             // FIXME: removed after MacOSX 10.6 (does not appear in MacOSX 10.7)
-            "VM_PROT_TRUSTED" => true,
+            "VM_PROT_TRUSTED" |
+            // FIXME: wrong value: byte 1: rust: 7 (0x7) != c 0 (0x0)
+            "VM_VOLATILE_GROUP_DEFAULT" |
+            // FIXME: wrong value:
+            // * i686: byte 0: rust: 5 (0x5) != c 4 (0x4)
+            "TASK_BASIC_INFO" |
+            // FIXME: wrong value: byte 0: rust: 11 (0xb) != c 13 (0xd)
+            "VM_REGION_EXTENDED_INFO"
+
+            => true,
             _ => false,
         }
     });
