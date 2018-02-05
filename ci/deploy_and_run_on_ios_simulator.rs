@@ -15,6 +15,10 @@
 // To do this through Cargo instead, use Dinghy
 // (https://github.com/snipsco/dinghy): cargo dinghy install, then cargo dinghy
 // test.
+//
+// Source: this script is part of libc
+// https://github.com/rust-lang/libc/blob/master/ci/ios/deploy_and_run_on_ios_simulator.rs
+// and should be sync'ed with it when ci breaks (or periodically).
 
 use std::env;
 use std::fs::{self, File};
