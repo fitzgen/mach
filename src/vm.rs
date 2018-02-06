@@ -1,7 +1,5 @@
 //! This module roughly corresponds to `mach/mach_vm.defs`.
 
-use core::mem;
-
 use boolean::{boolean_t};
 use kern_return::{kern_return_t};
 use memory_object_types::{memory_object_offset_t, memory_object_size_t};
@@ -153,6 +151,7 @@ extern "C" {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use core::mem;
 
     #[test]
     fn mach_vm_allocate_sanity() {
