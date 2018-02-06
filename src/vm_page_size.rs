@@ -18,7 +18,8 @@ pub unsafe fn mach_vm_round_page(x: mach_vm_offset_t) -> mach_vm_offset_t {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use vm_page_size::*;
+    use vm_types::mach_vm_size_t;
 
     #[test]
     fn page_size() {

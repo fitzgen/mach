@@ -12,13 +12,15 @@ extern "C" {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use traps::*;
+    use port::*;
+
     #[test]
     fn mach_task_self_sanity() {
         unsafe {
             let this_task = mach_task_self();
-            assert!(this_task != ::port::MACH_PORT_NULL);
-            assert!(this_task != ::port::MACH_PORT_DEAD);
+            assert!(this_task != MACH_PORT_NULL);
+            assert!(this_task != MACH_PORT_DEAD);
         }
     }
 }

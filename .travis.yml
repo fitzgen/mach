@@ -61,8 +61,11 @@ script:
   - cargo build --no-default-features --target $TARGET --verbose 2>&1 | tee build_no_std.txt
 
   # Check that the no-std builds do not include std by accident:
-  - cat build_std.txt | grep -q "default" && cat build_std.txt | grep -q "use_std"
-  - ! cat build_no_std.txt | grep -q "default" && ! cat build_no_std.txt | grep -q "use_std"
+  - |
+    cat build_std.txt | grep -q "default"
+    cat build_std.txt | grep -q "use_std"
+    ! cat build_no_std.txt | grep -q "default"
+    ! cat build_no_std.txt | grep -q "use_std"
 
   - |
     if [[ -z "$NORUN" ]]; then

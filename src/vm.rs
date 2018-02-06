@@ -150,15 +150,17 @@ extern "C" {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use core::mem;
+    use vm_types::*;
+    use vm_region::*;
+    use kern_return::*;
+    use traps::*;
+    use vm_statistics::*;
+    use vm_prot::*;
+    use vm::*;
 
     #[test]
     fn mach_vm_allocate_sanity() {
-        use kern_return::*;
-        use traps::mach_task_self;
-        use vm_statistics::VM_FLAGS_ANYWHERE;
-
         unsafe {
             let size = 0x100;
             let task = mach_task_self();
@@ -171,10 +173,6 @@ mod tests {
 
     #[test]
     fn mach_vm_region_sanity() {
-        use kern_return::*;
-        use traps::mach_task_self;
-        use vm_prot::*;
-
         unsafe {
             let mut size = 0x10;
             let mut object_name = 0;
