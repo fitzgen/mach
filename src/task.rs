@@ -7,7 +7,7 @@ use port::{mach_port_t};
 use task_info::{task_flavor_t, task_info_t};
 use types::{task_t, thread_act_array_t};
 
-pub type task_special_port_t = ::std::os::raw::c_int;
+pub type task_special_port_t = ::libc::c_int;
 
 pub const TASK_KERNEL_PORT:    task_special_port_t = 1;
 pub const TASK_HOST_PORT:      task_special_port_t = 2;
