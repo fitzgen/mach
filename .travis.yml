@@ -1,11 +1,65 @@
 language: rust
-rust:
-  - 1.11.0
-  - beta
-  - nightly
-os:
-  - osx
 
+matrix:
+  fast_finish: true
+  include:
+    - env: TARGET=x86_64-apple-darwin
+      rust: 1.11.0
+      os: osx
+    - env: TARGET=x86_64-apple-darwin
+      rust: beta
+      os: osx
+    - env: TARGET=x86_64-apple-darwin
+      rust: nightly
+      os: osx
+    - env: TARGET=i686-apple-darwin
+      rust: 1.11.0
+      os: osx
+    - env: TARGET=i686-apple-darwin
+      rust: beta
+      os: osx
+    - env: TARGET=i686-apple-darwin
+      rust: nightly
+      os: osx
+    - env: TARGET=i386-apple-ios
+           CARGO_TARGET_I386_APPLE_IOS_RUNNER=$HOME/runtest
+           RUSTFLAGS=-Clink-arg=-mios-simulator-version-min=7.0
+           NORUN=1
+      rust: nightly      
+      os: osx
+      osx_image: xcode8.2
+      before_install:
+        rustc ./ci/deploy_and_run_on_ios_simulator.rs -o $HOME/runtest
+    - env: TARGET=x86_64-apple-ios
+           CARGO_TARGET_X86_64_APPLE_IOS_RUNNER=$HOME/runtest
+           RUSTFLAGS=-Clink-arg=-mios-simulator-version-min=7.0
+           NORUN=1
+      rust: nightly
+      os: osx
+      osx_image: xcode8.2
+      before_install:
+        rustc ./ci/deploy_and_run_on_ios_simulator.rs -o $HOME/runtest
+    - env: TARGET=aarch64-apple-ios NORUN=1
+      rust: nightly
+      os: osx
+    - env: TARGET=armv7-apple-ios NORUN=1
+      rust: nightly
+      os: osx
+    - env: RUSTFMT
+      rust: nightly
+      before_script:
+        - rustup component add rustfmt-preview
+      script:
+        - cargo fmt -- --write-mode=diff
+  allow_failures:
+    - env: RUSTFMT
+    - env: TARGET=aarch64-apple-ios NORUN=1
+    - env: TARGET=armv7-apple-ios NORUN=1
 script:
-  - cargo build
-  - cargo test
+  - rustup target add $TARGET || true
+  - cargo build --target $TARGET
+  - if [[ -z "$NORUN" ]]; then cargo test --target $TARGET; fi
+  - |
+    if [[ $TRAVIS_RUST_VERSION == "nightly" ]]; then
+        cargo test --manifest-path mach-test/Cargo.toml --target $TARGET
+    fi

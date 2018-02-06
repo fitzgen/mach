@@ -1,0 +1,17 @@
+[package]
+name = "mach-test"
+version = "0.1.0"
+authors = ["gnzlbg <gonzalobg88@gmail.com>"]
+build = "build.rs"
+
+[dependencies]
+mach = { path = ".." }
+libc = "0.2"
+
+[build-dependencies]
+ctest = { git = "https://github.com/alexcrichton/ctest" }
+
+[[test]]
+name = "main"
+path = "test/main.rs"
+harness = false
