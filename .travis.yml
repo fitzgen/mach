@@ -58,8 +58,13 @@ matrix:
 script:
   - rustup target add $TARGET || true
   - cargo build --target $TARGET
-  - if [[ -z "$NORUN" ]]; then cargo test --target $TARGET; fi
+  - |
+    if [[ -z "$NORUN" ]]; then
+        cargo test --target $TARGET
+        cargo test --no-default-features --target $TARGET
+    fi
   - |
     if [[ $TRAVIS_RUST_VERSION == "nightly" ]]; then
         cargo test --manifest-path mach-test/Cargo.toml --target $TARGET
+        cargo test --no-default-features --manifest-path mach-test/Cargo.toml --target $TARGET
     fi
