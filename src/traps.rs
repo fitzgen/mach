@@ -9,3 +9,16 @@ extern "C" {
                         pid: ::libc::c_int,
                         tn: *mut mach_port_name_t) -> kern_return_t;
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn mach_task_self_sanity() {
+        unsafe {
+            let this_task = mach_task_self();
+            assert!(this_task != ::port::MACH_PORT_NULL);
+            assert!(this_task != ::port::MACH_PORT_DEAD);
+        }
+    }
+}
