@@ -148,44 +148,47 @@ extern "C" {
                              infoCnt: *mut mach_msg_type_number_t) -> kern_return_t;
 }
 
-#[test]
-fn mach_vm_allocate_sanity_test() {
+#[cfg(test)]
+mod tests {
+    use core::mem;
+    use vm_types::*;
+    use vm_region::*;
     use kern_return::*;
-    use traps::mach_task_self;
-    use vm_statistics::VM_FLAGS_ANYWHERE;
-
-    unsafe {
-        let size = 0x100;
-        let task = mach_task_self();
-
-        let mut address: mach_vm_address_t = 0;
-        assert_eq!(mach_vm_allocate(task, &mut address, size, VM_FLAGS_ANYWHERE), KERN_SUCCESS);
-        println!("0x{:x}", address);
-        assert_eq!(mach_vm_deallocate(task, address, size), KERN_SUCCESS);
-    }
-}
-
-#[test]
-fn mach_vm_region_sanity_test() {
-    use kern_return::*;
-    use traps::mach_task_self;
+    use traps::*;
+    use vm_statistics::*;
     use vm_prot::*;
+    use vm::*;
 
-    unsafe {
-        let mut size = 0x10;
-        let mut object_name = 0;
-        let mut address = mach_vm_region_sanity_test as mach_vm_address_t;
-        let mut info: vm_region_basic_info_64 = ::std::mem::zeroed();
-        let mut info_size = vm_region_basic_info_64::count();
+    #[test]
+    fn mach_vm_allocate_sanity() {
+        unsafe {
+            let size = 0x100;
+            let task = mach_task_self();
 
-        let result = mach_vm_region(mach_task_self(),
-                                    &mut address,
-                                    &mut size,
-                                    VM_REGION_BASIC_INFO_64,
-                                    (&mut info as *mut _) as vm_region_info_t,
-                                    &mut info_size,
-                                    &mut object_name);
-        assert_eq!(result, KERN_SUCCESS);
-        assert_eq!(info.protection, VM_PROT_READ | VM_PROT_EXECUTE);
+            let mut address: mach_vm_address_t = 0;
+            assert_eq!(mach_vm_allocate(task, &mut address, size, VM_FLAGS_ANYWHERE), KERN_SUCCESS);
+            assert_eq!(mach_vm_deallocate(task, address, size), KERN_SUCCESS);
+        }
+    }
+
+    #[test]
+    fn mach_vm_region_sanity() {
+        unsafe {
+            let mut size = 0x10;
+            let mut object_name = 0;
+            let mut address = mach_vm_region_sanity as mach_vm_address_t;
+            let mut info: vm_region_basic_info_64 = mem::zeroed();
+            let mut info_size = vm_region_basic_info_64::count();
+
+            let result = mach_vm_region(mach_task_self(),
+                                        &mut address,
+                                        &mut size,
+                                        VM_REGION_BASIC_INFO_64,
+                                        (&mut info as *mut _) as vm_region_info_t,
+                                        &mut info_size,
+                                        &mut object_name);
+            assert_eq!(result, KERN_SUCCESS);
+            assert_eq!(info.protection, VM_PROT_READ | VM_PROT_EXECUTE);
+        }
     }
 }

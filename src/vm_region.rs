@@ -1,6 +1,6 @@
 //! This module roughly corresponds to `mach/vm_region.h`.
 
-use std::mem;
+use core::mem;
 
 use boolean::{boolean_t};
 use memory_object_types::{memory_object_offset_t, vm_object_id_t};

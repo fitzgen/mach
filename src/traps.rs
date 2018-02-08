@@ -10,10 +10,17 @@ extern "C" {
                         tn: *mut mach_port_name_t) -> kern_return_t;
 }
 
-#[test]
-fn mach_task_self_sanity_test() {
-    unsafe {
-        let this_task = mach_task_self();
-        println!("{:?}", this_task);
+#[cfg(test)]
+mod tests {
+    use traps::*;
+    use port::*;
+
+    #[test]
+    fn mach_task_self_sanity() {
+        unsafe {
+            let this_task = mach_task_self();
+            assert!(this_task != MACH_PORT_NULL);
+            assert!(this_task != MACH_PORT_DEAD);
+        }
     }
 }

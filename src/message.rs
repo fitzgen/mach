@@ -1,23 +1,21 @@
 //! This module corresponds to `mach/message.h`.
 
-use std::os::raw::{c_uint, c_void};
-
 use kern_return::{kern_return_t};
 use port::{mach_port_name_t, mach_port_t};
 use vm_types::{integer_t, natural_t};
 
 pub type mach_msg_timeout_t = natural_t;
 
-pub type mach_msg_bits_t = c_uint;
+pub type mach_msg_bits_t = ::libc::c_uint;
 pub type mach_msg_id_t = integer_t;
 pub type mach_msg_size_t = natural_t;
 
-pub type mach_msg_copy_options_t = c_uint;
-pub type mach_msg_descriptor_type_t = c_uint;
-pub type mach_msg_type_name_t = c_uint;
+pub type mach_msg_copy_options_t = ::libc::c_uint;
+pub type mach_msg_descriptor_type_t = ::libc::c_uint;
+pub type mach_msg_type_name_t = ::libc::c_uint;
 
-pub type mach_msg_trailer_type_t = c_uint;
-pub type mach_msg_trailer_size_t = c_uint;
+pub type mach_msg_trailer_type_t = ::libc::c_uint;
+pub type mach_msg_trailer_size_t = ::libc::c_uint;
 
 pub type mach_msg_option_t = integer_t;
 
@@ -190,7 +188,7 @@ impl mach_msg_port_descriptor_t {
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
 pub struct mach_msg_ool_descriptor_t {
-    pub address: *mut c_void,
+    pub address: *mut ::libc::c_void,
     #[cfg(not(target_pointer_width = "64"))]
     pub size: mach_msg_size_t,
     pub deallocate: u8, // boolean_t bitfield
@@ -202,7 +200,7 @@ pub struct mach_msg_ool_descriptor_t {
 }
 
 impl mach_msg_ool_descriptor_t {
-    pub fn new(address: *mut c_void,
+    pub fn new(address: *mut ::libc::c_void,
                deallocate: bool,
                copy: mach_msg_copy_options_t,
                size: u32)
@@ -221,7 +219,7 @@ impl mach_msg_ool_descriptor_t {
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
 pub struct mach_msg_ool_ports_descriptor_t {
-    pub address: *mut c_void,
+    pub address: *mut ::libc::c_void,
     #[cfg(not(target_pointer_width = "64"))]
     pub count: mach_msg_size_t,
     pub deallocate: u8, // boolean_t bitfield

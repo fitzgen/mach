@@ -1,6 +1,6 @@
 //! This module corresponds to `mach/_structs.h`.
 
-use std::mem;
+use core::mem;
 
 use message::{mach_msg_type_number_t};
 
