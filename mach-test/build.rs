@@ -1,6 +1,41 @@
 extern crate ctest;
 
+#[derive(Eq, Ord, PartialEq, PartialOrd, Copy, Clone, Debug)]
+struct Xcode(pub u32, pub u32);
+
+impl Xcode {
+    fn version() -> Xcode {
+        use std::process::Command;
+        let out = Command::new("/usr/bin/xcodebuild")
+            .arg("-version").output().expect("failed to execute xcodebuild");
+        let stdout = ::std::str::from_utf8(&out.stdout).expect("couldn't parse stdout as UTF8");
+        let stderr = ::std::str::from_utf8(&out.stderr).expect("couldn't parse stderr as UTF8");
+
+        if !out.status.success() {
+            eprintln!("stdout: {}", stdout);
+            eprintln!("stderr: {}", stderr);
+            panic!("xcodebuild -version failed");
+        }
+
+        // xcodebuild -version output looks like:
+        //
+        // Xcode 9.2
+        // Build version 9C40b
+        let mut iter = stdout.split(|c: char| c.is_whitespace() || c == '.').skip(1).map(
+            |c| c.parse().expect("failed to parse Xcode version into number")
+        );
+        let major: u32 = iter.next().expect("failed to parse Xcode major version");
+        let minor: u32 = iter.next().expect("failed to parse Xcode minor version");
+
+        Xcode(major, minor)
+    }
+}
+
 fn main() {
+    let xcode = Xcode::version();
+    // kept on purpose for debugging:
+    // println!("cargo:warning=\"Xcode version: {:?}\"", xcode);
+
     let mut cfg = ctest::TestGenerator::new();
 
     // Include the header files where the C APIs are defined
@@ -167,10 +202,8 @@ fn main() {
         }
     });
 
-    cfg.skip_const(|s| {
+    cfg.skip_const(move |s| {
         match s {
-            // FIXME: removed after MacOSX 10.6 (does not appear in MacOSX 10.7)
-            "VM_PROT_TRUSTED" |
             // FIXME: wrong value: byte 1: rust: 7 (0x7) != c 0 (0x0)
             "VM_VOLATILE_GROUP_DEFAULT" |
             // FIXME: wrong value:
@@ -178,8 +211,12 @@ fn main() {
             "TASK_BASIC_INFO" |
             // FIXME: wrong value: byte 0: rust: 11 (0xb) != c 13 (0xd)
             "VM_REGION_EXTENDED_INFO"
-
             => true,
+            // Added in MacOSX 10.11.0 (Xcode 7.3)
+            "TASK_VM_INFO_PURGEABLE_ACCOUNT" | "TASK_FLAGS_INFO" | "TASK_DEBUG_INFO_INTERNAL"
+                if xcode < Xcode(7, 3) => true,
+            // Removed after MacOSX 10.6 (does not appear in MacOSX 10.7)
+            "VM_PROT_TRUSTED" if xcode > Xcode(4, 3) => true,
             _ => false,
         }
     });

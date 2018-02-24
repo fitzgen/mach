@@ -3,48 +3,162 @@ language: rust
 matrix:
   fast_finish: true
   include:
+    # x86_64-apple-darwin
     - env: TARGET=x86_64-apple-darwin
       rust: 1.11.0
       os: osx
+      osx_image: xcode8.3
     - env: TARGET=x86_64-apple-darwin
       rust: beta
       os: osx
+      osx_image: xcode9.2
     - env: TARGET=x86_64-apple-darwin
       rust: nightly
       os: osx
+      osx_image: xcode9.2
+    - env: TARGET=x86_64-apple-darwin
+      rust: nightly
+      os: osx
+      osx_image: xcode8.3
+    - env: TARGET=x86_64-apple-darwin
+      rust: nightly
+      os: osx
+      osx_image: xcode7.3
+    - env: TARGET=x86_64-apple-darwin
+      rust: nightly
+      os: osx
+      osx_image: xcode6.4
+
+    # i686-apple-darwin
     - env: TARGET=i686-apple-darwin
       rust: 1.11.0
       os: osx
+      osx_image: xcode8.3
     - env: TARGET=i686-apple-darwin
       rust: beta
       os: osx
+      osx_image: xcode9.2
     - env: TARGET=i686-apple-darwin
       rust: nightly
       os: osx
-    - env: TARGET=i386-apple-ios
-           CARGO_TARGET_I386_APPLE_IOS_RUNNER=$HOME/runtest
-           RUSTFLAGS=-Clink-arg=-mios-simulator-version-min=7.0
-           NORUN=1
-      rust: nightly      
-      os: osx
-      osx_image: xcode8.2
-      before_install:
-        rustc ./ci/deploy_and_run_on_ios_simulator.rs -o $HOME/runtest
-    - env: TARGET=x86_64-apple-ios
-           CARGO_TARGET_X86_64_APPLE_IOS_RUNNER=$HOME/runtest
-           RUSTFLAGS=-Clink-arg=-mios-simulator-version-min=7.0
-           NORUN=1
+      osx_image: xcode9.2
+    - env: TARGET=i686-apple-darwin
       rust: nightly
       os: osx
-      osx_image: xcode8.2
-      before_install:
-        rustc ./ci/deploy_and_run_on_ios_simulator.rs -o $HOME/runtest
-    - env: TARGET=aarch64-apple-ios NORUN=1
+      osx_image: xcode8.3
+    - env: TARGET=i686-apple-darwin
       rust: nightly
       os: osx
-    - env: TARGET=armv7-apple-ios NORUN=1
+      osx_image: xcode7.3
+    - env: TARGET=i686-apple-darwin
       rust: nightly
       os: osx
+      osx_image: xcode6.4
+
+    # x86_64-apple-ios
+    - env: TARGET=x86_64-apple-ios NORUN=1
+      rust: 1.11.0
+      os: osx
+      osx_image: xcode8.3
+    - env: TARGET=x86_64-apple-ios NORUN=1
+      rust: beta
+      os: osx
+      osx_image: xcode9.2
+    - env: TARGET=x86_64-apple-ios NORUN=1
+      rust: nightly
+      os: osx
+      osx_image: xcode9.2
+    - env: TARGET=x86_64-apple-ios NORUN=1
+      rust: nightly
+      os: osx
+      osx_image: xcode8.3
+    - env: TARGET=x86_64-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode7.3
+    - env: TARGET=x86_64-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode6.4
+
+    # i386-apple-ios
+    - env: TARGET=i386-apple-ios NORUN=1
+      rust: 1.11.0
+      os: osx
+      osx_image: xcode8.3
+    - env: TARGET=i386-apple-ios NORUN=1
+      rust: beta
+      os: osx
+      osx_image: xcode9.2
+    - env: TARGET=i386-apple-ios NORUN=1
+      rust: nightly
+      os: osx
+      osx_image: xcode9.2
+    - env: TARGET=i386-apple-ios NORUN=1
+      rust: nightly
+      os: osx
+      osx_image: xcode8.3
+    - env: TARGET=i386-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode7.3
+    - env: TARGET=i386-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode6.4
+
+    # aarch64-apple-ios
+    - env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
+      rust: 1.11.0
+      os: osx
+      osx_image: xcode8.3
+    - env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
+      rust: beta
+      os: osx
+      osx_image: xcode9.2
+    - env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode9.2
+    - env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode8.3
+    - env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode7.3
+    - env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode6.4
+
+    # armv7-apple-ios
+    - env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
+      rust: 1.11.0
+      os: osx
+      osx_image: xcode8.3
+    - env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
+      rust: beta
+      os: osx
+      osx_image: xcode9.2
+    - env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode9.2
+    - env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode8.3
+    - env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode7.3
+    - env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
+      rust: nightly
+      os: osx
+      osx_image: xcode6.4
+
     - env: RUSTFMT
       rust: nightly
       before_script:
@@ -53,27 +167,5 @@ matrix:
         - cargo fmt -- --write-mode=diff
   allow_failures:
     - env: RUSTFMT
-    - env: TARGET=aarch64-apple-ios NORUN=1
-    - env: TARGET=armv7-apple-ios NORUN=1
 script:
-  - rustup target add $TARGET || true
-  - cargo build --target $TARGET --verbose 2>&1 | tee build_std.txt
-  - cargo build --no-default-features --target $TARGET --verbose 2>&1 | tee build_no_std.txt
-
-  # Check that the no-std builds do not include std by accident:
-  - |
-    cat build_std.txt | grep -q "default"
-    cat build_std.txt | grep -q "use_std"
-    ! cat build_no_std.txt | grep -q "default"
-    ! cat build_no_std.txt | grep -q "use_std"
-
-  - |
-    if [[ -z "$NORUN" ]]; then
-        cargo test --target $TARGET
-        cargo test --no-default-features --target $TARGET
-    fi
-  - |
-    if [[ $TRAVIS_RUST_VERSION == "nightly" ]]; then
-        cargo test --manifest-path mach-test/Cargo.toml --target $TARGET
-        cargo test --no-default-features --manifest-path mach-test/Cargo.toml --target $TARGET
-    fi
+  - ci/run.sh
