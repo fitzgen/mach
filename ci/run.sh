@@ -34,6 +34,8 @@ cat build_std.txt | grep -q "default"
 cat build_std.txt | grep -q "use_std"
 ! cat build_no_std.txt | grep -q "default"
 ! cat build_no_std.txt | grep -q "use_std"
+# Make sure that the resulting build contains no std symbols
+! find target/ -name *.rlib -exec nm {} \; | grep "std"
 
 # Runs mach's run-time tests:
 if [[ -z "$NORUN" ]]; then
