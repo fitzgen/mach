@@ -108,9 +108,6 @@ fn main() {
             // FIXME: type duplicated multiple times inside the library.
             "task_name_t" |
 
-            // FIXME: removed since MacOSX 10.3.9:
-            "pmap_statistics_t" |
-
             // FIXME (i686): size: rust: 4 (0x4) != c 8 (0x8)
             "user_addr_t"|
 
