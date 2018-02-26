@@ -46,10 +46,10 @@ extern "C" {
                              data_list: mach_vm_read_entry_t,
                              count: natural_t) -> kern_return_t;
 
-    pub fn mach_vm_write(target_task: vm_task_entry_t,
+    pub fn mach_vm_write(target_task: vm_map_t,
                          address: mach_vm_address_t,
                          data: vm_offset_t,
-                         dataCnt: mach_msg_type_number_t);
+                         dataCnt: mach_msg_type_number_t) -> kern_return_t;
 
     pub fn mach_vm_copy(target_task: vm_task_entry_t,
                         source_address: mach_vm_address_t,

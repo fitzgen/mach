@@ -125,7 +125,7 @@ fn main() {
             // 'int  (unsigned int, unsigned long long, unsigned long, unsigned int)'
             // vs
             // 'void (unsigned int, unsigned long long, unsigned long, unsigned int)'
-            "mach_vm_write" |
+            //"mach_vm_write" |
 
             // FIXME: incompatible function type:
             // 'int (unsigned int, unsigned long long *, unsigned long long, unsigned long long, int, unsigned int, unsigned long long, unsigned int, int, int, unsigned int)'
