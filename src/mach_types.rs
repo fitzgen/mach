@@ -84,3 +84,24 @@ pub const LEDGER_NULL:        ledger_t        = 0;
 pub const ALARM_NULL:         alarm_t         = 0;
 pub const CLOCK_NULL:         ::libc::clock_t = 0;
 pub const UND_SERVER_NULL:    UNDServerRef    = 0;
+
+// <sys/_types.h>: typedef	unsigned char	__darwin_uuid_t[16];
+pub type uuid_t = [::libc::c_uchar; 16usize];
+
+
+// <sys/_types/_fsid_t.h>
+#[repr(C)]
+#[derive(Debug, Default, Copy, Clone, Hash, PartialOrd, PartialEq)]
+pub struct fsid {
+    pub val: [i32; 2usize],
+}
+pub type fsid_t = fsid;
+
+// <sys/_types/_fsobj_id_t.h>
+#[repr(C)]
+#[derive(Debug, Default, Copy, Clone, Hash, PartialOrd, PartialEq)]
+pub struct fsobj_id {
+    pub fid_objno: u32,
+    pub fid_generation: u32,
+}
+pub type fsobj_id_t = fsobj_id;

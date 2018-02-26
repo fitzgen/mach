@@ -9,6 +9,7 @@ use mach::clock::*;
 use mach::clock_priv::*;
 use mach::clock_reply::*;
 use mach::clock_types::*;
+use mach::dyld_kernel::*;
 use mach::kern_return::*;
 use mach::mach_port::*;
 use mach::mach_types::*;
@@ -35,7 +36,7 @@ use mach::vm_statistics::*;
 use mach::vm_sync::*;
 use mach::vm_types::*;
 
-// FIXME: these types are not re-exported by mach::types but they are required.
+// These types are not re-exported by mach::types but they are required.
 use libc::{c_int, c_ulonglong, c_uchar, c_uint, clock_t};
 
 include!(concat!(env!("OUT_DIR"), "/all.rs"));

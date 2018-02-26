@@ -14,6 +14,7 @@ pub mod clock;
 pub mod clock_priv;
 pub mod clock_reply;
 pub mod clock_types;
+pub mod dyld_kernel;
 pub mod kern_return;
 pub mod mach_port;
 pub mod mach_types;

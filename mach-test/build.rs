@@ -200,6 +200,10 @@ fn main() {
             "mach_timespec_t" |
             "ipc_port_t"  |
             "vm_statistics_data_t" |
+            "fsid_t" |
+            "fsobj_id_t" |
+            "dyld_kernel_image_info_t" |
+            "dyld_kernel_process_info_t" |
 
             // array types:
             "vm_region_info_data_t" |
@@ -210,9 +214,11 @@ fn main() {
             "bootstrap_status_array_t" |
             "bootstrap_property_array_t" |
             "bool_array_t" |
+            "uuid_t" |
 
             // pointer types:
             "clock_attr_t" |
+            "dyld_kernel_image_info_array_t" |
             "memory_object_fault_info_t" |
             "exception_port_arrary_t" |
             "exception_handler_array_t" |
@@ -271,6 +277,10 @@ fn main() {
         | "vm_page_info_basic"
         | "vm_statistics"
         | "task_dyld_info"
+        | "fsid"
+        | "fsobj_id"
+        | "dyld_kernel_image_info"
+        | "dyld_kernel_process_info"
         | "mach_timespec"
         | "mach_vm_read_entry" => format!("struct {}", ty),
         _ if is_struct => format!("{}", ty),
