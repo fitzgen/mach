@@ -220,6 +220,9 @@ fn main() {
             "clock_attr_t" |
             "dyld_kernel_image_info_array_t" |
             "memory_object_fault_info_t" |
+            "exception_data_t" |
+            "exception_flavor_array_t" |
+            "exception_mask_array_t" |
             "exception_port_arrary_t" |
             "exception_handler_array_t" |
             "thread_state_t" |
@@ -229,6 +232,9 @@ fn main() {
             "thread_act_port_array_t" |
             "ledger_array_t" |
             "ledger_port_array_t" |
+            "mach_exception_data_t" |
+            "exception_behavior_array_t" |
+            "exception_port_array_t" |
             "task_info_t" |
             "task_array_t" |
             "task_port_array_t" |

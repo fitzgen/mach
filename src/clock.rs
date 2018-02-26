@@ -1,6 +1,6 @@
 //! This module roughly corresponds to `mach/clock.h`.
 
-pub const clock_MSG_COUNT: ::libc::c_int = 3;
+pub const clock_MSG_COUNT: ::libc::c_uint = 3;
 
 use mach_types::{clock_serv_t, clock_reply_t};
 use clock_types::{mach_timespec_t, clock_flavor_t, clock_attr_t, alarm_type_t};

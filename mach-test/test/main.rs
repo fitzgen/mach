@@ -10,6 +10,8 @@ use mach::clock_priv::*;
 use mach::clock_reply::*;
 use mach::clock_types::*;
 use mach::dyld_kernel::*;
+use mach::exc::*;
+use mach::exception_types::*;
 use mach::kern_return::*;
 use mach::mach_port::*;
 use mach::mach_types::*;
