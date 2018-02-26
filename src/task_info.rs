@@ -32,6 +32,8 @@ pub type task_flavor_t = natural_t;
 pub type task_info_t = *mut integer_t;
 
 #[repr(C)]
+// Undefined behavior: should be #[repr(packed(4))] once
+// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct task_dyld_info {
     pub all_image_info_addr: mach_vm_address_t,
     pub all_image_info_size: mach_vm_size_t,

@@ -91,8 +91,7 @@ fn main() {
             // FIXME: not #[repr(C)]
             "vm_statistics" |
 
-            // FIXME: only exposed in
-            // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
+            // FIXME: should use repr(packed(4))
             "task_dyld_info" |
 
             // FIXME (x86_64): wrong type offsets, field types, etc.
@@ -282,9 +281,10 @@ fn main() {
         }
     });
 
-    // struct foo in Rust should translate to foo in C:
     cfg.type_name(|ty, is_struct| match ty {
+        // struct foo in Rust should translate to foo_ in C:
         "mach_timespec" => format!("{}_t", ty),
+        // struct foo in Rust should translate to struct foo in C:
         "vm_region_basic_info_64"
         | "vm_region_basic_info"
         | "vm_region_extended_info"
@@ -294,6 +294,7 @@ fn main() {
         | "vm_region_submap_short_info_64"
         | "vm_page_info_basic"
         | "vm_statistics"
+        | "task_dyld_info"
         | "mach_vm_read_entry" => format!("struct {}", ty),
         _ if is_struct => format!("{}", ty),
         _ => ty.to_string(),
