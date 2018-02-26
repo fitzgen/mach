@@ -5,6 +5,7 @@ extern crate mach;
 
 use mach::boolean::*;
 use mach::bootstrap::*;
+use mach::clock::*;
 use mach::clock_types::*;
 use mach::kern_return::*;
 use mach::mach_port::*;

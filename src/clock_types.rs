@@ -29,16 +29,19 @@ pub const USEC_PER_SEC: ::libc::c_ulonglong = 1000000;
 pub const NSEC_PER_SEC: ::libc::c_ulonglong = 1000000000;
 pub const NSEC_PER_MSEC: ::libc::c_ulonglong =	1000000;
 
+#[allow(non_snake_case)]
 pub fn BAD_MACH_TIMESPEC(t: mach_timespec) -> bool {
     t.tv_nsec < 0 || (t.tv_nsec as ::libc::c_ulonglong) >= NSEC_PER_SEC
 }
 
+#[allow(non_snake_case)]
 pub fn CMP_MACH_TIMESPEC(t1: &mach_timespec, t2: &mach_timespec) -> ::libc::c_ulonglong {
     if t1.tv_sec > t2.tv_sec { return NSEC_PER_SEC; }
     if t1.tv_sec < t2.tv_sec { return !NSEC_PER_SEC; }
     (t1.tv_nsec as ::libc::c_ulonglong) - (t2.tv_nsec as ::libc::c_ulonglong)
 }
 
+#[allow(non_snake_case)]
 pub fn ADD_MACH_TIMESPEC(t1: &mut mach_timespec, t2: &mach_timespec) {
     t1.tv_nsec += t2.tv_nsec;
     if (t1.tv_nsec as ::libc::c_ulonglong) >= NSEC_PER_SEC {
@@ -48,6 +51,7 @@ pub fn ADD_MACH_TIMESPEC(t1: &mut mach_timespec, t2: &mach_timespec) {
     t1.tv_sec += t2.tv_sec;
 }
 
+#[allow(non_snake_case)]
 pub fn SUB_MACH_TIMESPEC(t1: &mut mach_timespec, t2: &mach_timespec) {
     t1.tv_nsec -= t2.tv_nsec;
     if t1.tv_nsec < 0 {
@@ -61,6 +65,7 @@ pub const ALRMTYPE: ::libc::c_int =	0xff;
 pub const TIME_ABSOLUTE: ::libc::c_int = 0x00;
 pub const	TIME_RELATIVE: ::libc::c_int = 	0x01;
 
+#[allow(non_snake_case)]
 pub fn BAD_ALRMTYPE(t: ::libc::c_int) -> bool {
     t & (!TIME_RELATIVE) != 0
 }

@@ -40,6 +40,7 @@ fn main() {
 
     // Include the header files where the C APIs are defined
     cfg.header("mach/mach.h")
+        .header("mach/clock.h")
         .header("mach/clock_types.h")
         .header("mach/i386/boolean.h")
         .header("mach/kern_return.h")
