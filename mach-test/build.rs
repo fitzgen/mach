@@ -108,9 +108,6 @@ fn main() {
             // FIXME: type duplicated multiple times inside the library.
             "task_name_t" |
 
-            // FIXME (i686): size: rust: 4 (0x4) != c 8 (0x8)
-            "user_addr_t"|
-
             // FIXME (686): align: rust: 4 (0x4) != c 8 (0x8)
             "bad user_addr_t" |
 
