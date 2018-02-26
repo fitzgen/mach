@@ -89,7 +89,7 @@ fn main() {
 
             // FIXME: multiple type mismatches in struct fields
             // FIXME: not #[repr(C)]
-            "vm_statistics" |
+            //"vm_statistics" |
 
             // FIXME: should use repr(packed(4))
             "task_dyld_info" |

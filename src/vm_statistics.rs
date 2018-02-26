@@ -38,6 +38,7 @@ pub const VM_FLAGS_FIXED: ::libc::c_int    = 0x0;
 pub const VM_FLAGS_ANYWHERE: ::libc::c_int = 0x1;
 pub const VM_FLAGS_OVERWRITE: ::libc::c_int = 0x4000;
 
+#[repr(C)]
 pub struct vm_statistics {
     pub free_count: integer_t,
     pub active_count: integer_t,
