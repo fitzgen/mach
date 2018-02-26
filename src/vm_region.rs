@@ -109,6 +109,7 @@ pub struct vm_region_extended_info {
     pub shadow_depth: ::libc::c_ushort,
     pub external_pager: ::libc::c_uchar,
     pub share_mode: ::libc::c_uchar,
+    pub pages_reusable: ::libc::c_uint,
 }
 
 impl vm_region_extended_info {
@@ -237,6 +238,8 @@ impl vm_page_info_basic {
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
+// Undefined behavior: should be #[repr(packed(4))] once
+// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct mach_vm_read_entry {
     pub address: mach_vm_address_t,
     pub size: mach_vm_size_t,

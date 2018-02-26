@@ -92,12 +92,7 @@ fn main() {
             "vm_region_basic_info_64" |
             "vm_region_submap_info_64" |
             "vm_region_submap_short_info_64" |
-
-            // FIXME (x86_64): align: rust: 8 (0x8) != c 4 (0x4)
-            "mach_vm_read_entry" |
-
-            // FIXME: size: rust: 32 (0x20) != c 36 (0x24)
-            "vm_region_extended_info"
+            "mach_vm_read_entry"
             => true,
             _ => false,
         }
