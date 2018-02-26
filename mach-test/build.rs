@@ -49,16 +49,16 @@ fn main() {
         .header("mach/message.h")
         .header("mach/port.h")
         .header("mach/i386/_structs.h")
-    // .header("mach/task.defs")
-     .header("mach/task.h")
+        //.header("mach/task.defs")
+        .header("mach/task.h")
         .header("mach/task_info.h")
-    //.header("mach/thread_act.defs")
         .header("mach/thread_act.h")
+        //.header("mach/thread_act.defs")
         .header("mach/thread_status.h")
         .header("mach/mach_traps.h")
         .header("mach/mach_types.h")
-    //.header("mach/mach_vm.defs.")
         .header("mach/mach_vm.h")
+        //.header("mach/mach_vm.defs.")
         .header("mach/vm_attributes.h")
         .header("mach/vm_behavior.h")
         .header("mach/vm_inherit.h")
@@ -95,7 +95,8 @@ fn main() {
             // FIXME: not #[repr(C)]
             "pmap_statistics" |
 
-            // FIXME: not #[repr(C)]
+            // FIXME: only exposed in
+            // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
             "task_dyld_info" |
 
             // FIXME (x86_64): wrong type offsets, field types, etc.
