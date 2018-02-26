@@ -105,33 +105,12 @@ fn main() {
             // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
             "ipc_port_t" |
 
-            // FIXME (x86_64):
-            // * size: rust: 40 (0x28) != c 36 (0x24)
-            // * align: rust: 8 (0x8) != c 4 (0x4)
+            // FIXME: corresponding struct should use repr(packed(4))
             "vm_region_basic_info_data_64_t" |
-
-            // FIXME:
-            // * i686: size: rust: 64 (0x40) != c 68 (0x44)
-            // * x86_64:
-            //   * size: rust: 72 (0x48) != c 68 (0x44)
-            //   * align: rust: 8 (0x8) != c 4 (0x4)
             "vm_region_submap_info_data_64_t"|
-
-            // FIXME: size: rust: 32 (0x20) != c 36 (0x24)
-            "vm_region_extended_info_data_t" |
-
-            // FIXME (x86_64): field types, offsets, etc.
-            // * size: rust: 56 (0x38) != c 48 (0x30)
-            // * align: rust: 8 (0x8) != c 4 (0x4)
             "vm_region_submap_short_info_data_64_t" |
-
-            // FIXME (x86_64): align: rust: 8 (0x8) != c 4 (0x4)
-            "mach_vm_read_entry_t" |
-
-            // FIXME: size: rust: 48 (0x30) != c 60 (0x3c)
-            "vm_statistics_data_t"
-
-                => true,
+            "mach_vm_read_entry_t"
+              => true,
             _ => false,
         }
     });
