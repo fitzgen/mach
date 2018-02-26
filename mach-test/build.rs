@@ -87,10 +87,6 @@ fn main() {
             // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
             "ipc_port" |
 
-            // FIXME: multiple type mismatches in struct fields
-            // FIXME: not #[repr(C)]
-            //"vm_statistics" |
-
             // FIXME: should use repr(packed(4))
             "task_dyld_info" |
 

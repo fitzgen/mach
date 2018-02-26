@@ -1,6 +1,6 @@
 //! This module roughly corresponds to `mach/vm_statistics.h`
 
-use vm_types::integer_t;
+use vm_types::{integer_t, natural_t};
 
 pub type vm_statistics_t = *mut vm_statistics;
 pub type vm_statistics_data_t = vm_statistics;
@@ -40,18 +40,21 @@ pub const VM_FLAGS_OVERWRITE: ::libc::c_int = 0x4000;
 
 #[repr(C)]
 pub struct vm_statistics {
-    pub free_count: integer_t,
-    pub active_count: integer_t,
-    pub inactive_count: integer_t,
-    pub wire_count: integer_t,
-    pub zero_fill_count: integer_t,
-    pub reactivations: integer_t,
-    pub pageins: integer_t,
-    pub pageouts: integer_t,
-    pub faults: integer_t,
-    pub cow_faults: integer_t,
-    pub lookups: integer_t,
-    pub hits: integer_t,
+    pub free_count: natural_t,
+    pub active_count: natural_t,
+    pub inactive_count: natural_t,
+    pub wire_count: natural_t,
+    pub zero_fill_count: natural_t,
+    pub reactivations: natural_t,
+    pub pageins: natural_t,
+    pub pageouts: natural_t,
+    pub faults: natural_t,
+    pub cow_faults: natural_t,
+    pub lookups: natural_t,
+    pub hits: natural_t,
+    pub purgeable_count: natural_t,
+    pub purges: natural_t,
+    pub speculative_count: natural_t,
 }
 
 // `pmap_statistics` was removed after MacOSX 10.3.9.
