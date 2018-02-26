@@ -40,6 +40,6 @@ use mach::vm_types::*;
 use mach::types::task_name_t;
 
 // FIXME: these types are not re-exported by mach::types but they are required.
-use libc::{c_int, c_uchar, c_uint, clock_t};
+use libc::{c_int, c_ulonglong, c_uchar, c_uint, clock_t};
 
 include!(concat!(env!("OUT_DIR"), "/all.rs"));
