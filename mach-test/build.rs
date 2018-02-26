@@ -91,10 +91,6 @@ fn main() {
             // FIXME: not #[repr(C)]
             "vm_statistics" |
 
-            // FIXME: removed since MacOSX 10.3.9:
-            // FIXME: not #[repr(C)]
-            "pmap_statistics" |
-
             // FIXME: only exposed in
             // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
             "task_dyld_info" |

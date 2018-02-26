@@ -53,6 +53,9 @@ pub struct vm_statistics {
     pub hits: integer_t,
 }
 
+// `pmap_statistics` was removed after MacOSX 10.3.9.
+#[cfg(feature = "deprecated")]
+#[repr(C)]
 pub struct pmap_statistics {
     pub resident_count: integer_t,
     pub wired_count: integer_t,
