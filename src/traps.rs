@@ -18,7 +18,6 @@ pub fn current_task() -> mach_port_t {
     mach_task_self()
 }
 
-
 #[cfg(test)]
 mod tests {
     use traps::*;
