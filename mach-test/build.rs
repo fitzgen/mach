@@ -89,22 +89,8 @@ fn main() {
 
             // FIXME: should use repr(packed(4))
             "task_dyld_info" |
-
-            // FIXME (x86_64): wrong type offsets, field types, etc.
-            // * size: rust: 40 (0x28) != c 36 (0x24)
-            // * align: rust: 8 (0x8) != c 4 (0x4)
             "vm_region_basic_info_64" |
-
-            // FIXME: bad field offsets, types, etc
-            // * i686: size: rust: 64 (0x40) != c 68 (0x44)
-            // * x86_64:
-            //   * size: rust: 72 (0x48) != c 68 (0x44)
-            //   * align: rust: 8 (0x8) != c 4 (0x4)
             "vm_region_submap_info_64" |
-
-            // FIXME (x86_64):
-            // * size: rust: 56 (0x38) != c 48 (0x30)
-            // * align: rust: 8 (0x8) != c 4 (0x4)
             "vm_region_submap_short_info_64" |
 
             // FIXME (x86_64): align: rust: 8 (0x8) != c 4 (0x4)

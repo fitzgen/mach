@@ -58,6 +58,8 @@ pub const SM_SHARED_ALIASED: ::libc::c_uchar  = 7;
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
+// Undefined behavior: should be #[repr(packed(4))] once
+// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct vm_region_basic_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -161,6 +163,8 @@ impl vm_region_submap_info {
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
+// Undefined behavior: should be #[repr(packed(4))] once
+// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct vm_region_submap_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -179,6 +183,7 @@ pub struct vm_region_submap_info_64 {
     pub behavior: vm_behavior_t,
     pub object_id: vm32_object_id_t,
     pub user_wired_count: ::libc::c_ushort,
+    pub pages_reusable: ::libc::c_uint,
 }
 
 impl vm_region_submap_info_64 {
@@ -189,6 +194,8 @@ impl vm_region_submap_info_64 {
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
+// Undefined behavior: should be #[repr(packed(4))] once
+// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct vm_region_submap_short_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
