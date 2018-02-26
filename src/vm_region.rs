@@ -45,7 +45,7 @@ pub const VM_PAGE_INFO_BASIC: vm_page_info_flavor_t = 1;
 
 pub const VM_REGION_BASIC_INFO_64: vm_region_flavor_t = 9;
 pub const VM_REGION_BASIC_INFO: vm_region_flavor_t    = 10;
-pub const VM_REGION_EXTENDED_INFO: vm_region_flavor_t = 11;
+pub const VM_REGION_EXTENDED_INFO: vm_region_flavor_t = 13;
 pub const VM_REGION_TOP_INFO: vm_region_flavor_t      = 12;
 
 pub const SM_COW: ::libc::c_uchar             = 1;
@@ -58,6 +58,8 @@ pub const SM_SHARED_ALIASED: ::libc::c_uchar  = 7;
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
+// Undefined behavior: should be #[repr(packed(4))] once
+// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct vm_region_basic_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -107,6 +109,7 @@ pub struct vm_region_extended_info {
     pub shadow_depth: ::libc::c_ushort,
     pub external_pager: ::libc::c_uchar,
     pub share_mode: ::libc::c_uchar,
+    pub pages_reusable: ::libc::c_uint,
 }
 
 impl vm_region_extended_info {
@@ -161,6 +164,8 @@ impl vm_region_submap_info {
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
+// Undefined behavior: should be #[repr(packed(4))] once
+// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct vm_region_submap_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -179,6 +184,7 @@ pub struct vm_region_submap_info_64 {
     pub behavior: vm_behavior_t,
     pub object_id: vm32_object_id_t,
     pub user_wired_count: ::libc::c_ushort,
+    pub pages_reusable: ::libc::c_uint,
 }
 
 impl vm_region_submap_info_64 {
@@ -189,6 +195,8 @@ impl vm_region_submap_info_64 {
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
+// Undefined behavior: should be #[repr(packed(4))] once
+// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct vm_region_submap_short_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -230,6 +238,8 @@ impl vm_page_info_basic {
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug)]
+// Undefined behavior: should be #[repr(packed(4))] once
+// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct mach_vm_read_entry {
     pub address: mach_vm_address_t,
     pub size: mach_vm_size_t,

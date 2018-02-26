@@ -5,7 +5,10 @@ pub const TASK_INFO_MAX: ::libc::c_uint = 1024;
 pub const TASK_BASIC_INFO_32: ::libc::c_uint = 4;
 pub const TASK_BASIC2_INFO_32: ::libc::c_uint = 6;
 pub const TASK_BASIC_INFO_64: ::libc::c_uint = 5;
+#[cfg(target_arch = "x86_64")]
 pub const TASK_BASIC_INFO: ::libc::c_uint = 5;
+#[cfg(target_arch = "x86")]
+pub const TASK_BASIC_INFO: ::libc::c_uint = 4;
 pub const TASK_EVENTS_INFO: ::libc::c_uint = 2;
 pub const TASK_THREAD_TIMES_INFO: ::libc::c_uint = 3;
 pub const TASK_ABSOLUTETIME_INFO: ::libc::c_uint = 1;
@@ -31,6 +34,9 @@ pub const TASK_DEBUG_INFO_INTERNAL: ::libc::c_uint = 29;
 pub type task_flavor_t = natural_t;
 pub type task_info_t = *mut integer_t;
 
+#[repr(C)]
+// Undefined behavior: should be #[repr(packed(4))] once
+// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct task_dyld_info {
     pub all_image_info_addr: mach_vm_address_t,
     pub all_image_info_size: mach_vm_size_t,

@@ -16,5 +16,7 @@ version = "0.2"
 default-features = false
 
 [features]
-default = [ "use_std" ]
+default = [ "use_std", "deprecated" ]
 use_std = [ "libc/use_std" ]
+# Enables deprecated and removed APIs.
+deprecated = []

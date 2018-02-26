@@ -48,17 +48,18 @@ fn main() {
         .header("mach/memory_object_types.h")
         .header("mach/message.h")
         .header("mach/port.h")
+        .header("mach/mach_init.h")
         .header("mach/i386/_structs.h")
-    // .header("mach/task.defs")
-     .header("mach/task.h")
+        //.header("mach/task.defs")
+        .header("mach/task.h")
         .header("mach/task_info.h")
-    //.header("mach/thread_act.defs")
         .header("mach/thread_act.h")
+        //.header("mach/thread_act.defs")
         .header("mach/thread_status.h")
         .header("mach/mach_traps.h")
         .header("mach/mach_types.h")
-    //.header("mach/mach_vm.defs.")
         .header("mach/mach_vm.h")
+        //.header("mach/mach_vm.defs.")
         .header("mach/vm_attributes.h")
         .header("mach/vm_behavior.h")
         .header("mach/vm_inherit.h")
@@ -87,39 +88,12 @@ fn main() {
             // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
             "ipc_port" |
 
-            // FIXME: multiple type mismatches in struct fields
-            // FIXME: not #[repr(C)]
-            "vm_statistics" |
-
-            // FIXME: removed since MacOSX 10.3.9:
-            // FIXME: not #[repr(C)]
-            "pmap_statistics" |
-
-            // FIXME: not #[repr(C)]
+            // FIXME: should use repr(packed(4))
             "task_dyld_info" |
-
-            // FIXME (x86_64): wrong type offsets, field types, etc.
-            // * size: rust: 40 (0x28) != c 36 (0x24)
-            // * align: rust: 8 (0x8) != c 4 (0x4)
             "vm_region_basic_info_64" |
-
-            // FIXME: bad field offsets, types, etc
-            // * i686: size: rust: 64 (0x40) != c 68 (0x44)
-            // * x86_64:
-            //   * size: rust: 72 (0x48) != c 68 (0x44)
-            //   * align: rust: 8 (0x8) != c 4 (0x4)
             "vm_region_submap_info_64" |
-
-            // FIXME (x86_64):
-            // * size: rust: 56 (0x38) != c 48 (0x30)
-            // * align: rust: 8 (0x8) != c 4 (0x4)
             "vm_region_submap_short_info_64" |
-
-            // FIXME (x86_64): align: rust: 8 (0x8) != c 4 (0x4)
-            "mach_vm_read_entry" |
-
-            // FIXME: size: rust: 32 (0x20) != c 36 (0x24)
-            "vm_region_extended_info"
+            "mach_vm_read_entry"
             => true,
             _ => false,
         }
@@ -132,71 +106,22 @@ fn main() {
             // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
             "ipc_port_t" |
 
-            // FIXME: type duplicated multiple times inside the library.
-            "task_name_t" |
-
-            // FIXME: removed since MacOSX 10.3.9:
-            "pmap_statistics_t" |
-
-            // FIXME (i686): size: rust: 4 (0x4) != c 8 (0x8)
-            "user_addr_t"|
-
-            // FIXME (686): align: rust: 4 (0x4) != c 8 (0x8)
-            "bad user_addr_t" |
-
-            // FIXME (x86_64):
-            // * size: rust: 40 (0x28) != c 36 (0x24)
-            // * align: rust: 8 (0x8) != c 4 (0x4)
+            // FIXME: corresponding struct should use repr(packed(4))
             "vm_region_basic_info_data_64_t" |
-
-            // FIXME:
-            // * i686: size: rust: 64 (0x40) != c 68 (0x44)
-            // * x86_64:
-            //   * size: rust: 72 (0x48) != c 68 (0x44)
-            //   * align: rust: 8 (0x8) != c 4 (0x4)
             "vm_region_submap_info_data_64_t"|
-
-            // FIXME: size: rust: 32 (0x20) != c 36 (0x24)
-            "vm_region_extended_info_data_t" |
-
-            // FIXME (x86_64): field types, offsets, etc.
-            // * size: rust: 56 (0x38) != c 48 (0x30)
-            // * align: rust: 8 (0x8) != c 4 (0x4)
             "vm_region_submap_short_info_data_64_t" |
-
-            // FIXME (x86_64): align: rust: 8 (0x8) != c 4 (0x4)
-            "mach_vm_read_entry_t" |
-
-            // FIXME: size: rust: 48 (0x30) != c 60 (0x3c)
-            "vm_statistics_data_t"
-
-                => true,
+            "mach_vm_read_entry_t"
+              => true,
             _ => false,
         }
     });
 
+
     cfg.skip_fn(|s| {
         match s {
-            // FIXME: not found in /usr/include/mach but maybe in
-            // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
-            "mach_task_self" |
-
-            // FIXME: incompatible function type:
-            // 'int  (unsigned int, unsigned long long, unsigned long, unsigned int)'
-            // vs
-            // 'void (unsigned int, unsigned long long, unsigned long, unsigned int)'
-            "mach_vm_write" |
-
-            // FIXME: incompatible function type:
-            // 'int (unsigned int, unsigned long long *, unsigned long long, unsigned long long, int, unsigned int, unsigned long long, unsigned int, int, int, unsigned int)'
-            // vs
-            // 'int (unsigned int, unsigned long long, unsigned long long, unsigned long long, int, unsigned int, unsigned long long, unsigned int, int, int, unsigned int)'
-            "mach_vm_map" |
-            // FIXME: incompatible function type:
-            // 'int (unsigned int, unsigned long *, unsigned long, int, unsigned int *, unsigned int)'
-            // 'int (*)(unsigned int, unsigned long long *, unsigned long long, int, unsigned int *, unsigned int)'
-            "mach_make_memory_entry"
-
+            // mac_task_self and current_tasl are not functions, but macro that map to the
+            // mask_task_self_ static variable:
+            "mach_task_self" | "current_task"
             => true,
             _ => false,
         }
@@ -204,14 +129,10 @@ fn main() {
 
     cfg.skip_const(move |s| {
         match s {
-            // FIXME: wrong value: byte 1: rust: 7 (0x7) != c 0 (0x0)
-            "VM_VOLATILE_GROUP_DEFAULT" |
-            // FIXME: wrong value:
-            // * i686: byte 0: rust: 5 (0x5) != c 4 (0x4)
-            "TASK_BASIC_INFO" |
-            // FIXME: wrong value: byte 0: rust: 11 (0xb) != c 13 (0xd)
+            // Used to have a value of 11 until MacOSX 10.8 and changed to a
+            // value of 13 in MacOSX 10.9 ~ Xcode 6.4
             "VM_REGION_EXTENDED_INFO"
-            => true,
+                if xcode < Xcode(6, 4) => true,
             // Added in MacOSX 10.11.0 (Xcode 7.3)
             "TASK_VM_INFO_PURGEABLE_ACCOUNT" | "TASK_FLAGS_INFO" | "TASK_DEBUG_INFO_INTERNAL"
                 if xcode < Xcode(7, 3) => true,
@@ -285,9 +206,10 @@ fn main() {
         }
     });
 
-    // struct foo in Rust should translate to foo in C:
     cfg.type_name(|ty, is_struct| match ty {
+        // struct foo in Rust should translate to foo_ in C:
         "mach_timespec" => format!("{}_t", ty),
+        // struct foo in Rust should translate to struct foo in C:
         "vm_region_basic_info_64"
         | "vm_region_basic_info"
         | "vm_region_extended_info"
@@ -297,6 +219,7 @@ fn main() {
         | "vm_region_submap_short_info_64"
         | "vm_page_info_basic"
         | "vm_statistics"
+        | "task_dyld_info"
         | "mach_vm_read_entry" => format!("struct {}", ty),
         _ if is_struct => format!("{}", ty),
         _ => ty.to_string(),

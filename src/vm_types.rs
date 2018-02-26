@@ -3,7 +3,7 @@
 pub type natural_t = ::libc::c_uint;
 pub type integer_t = ::libc::c_int;
 
-pub type user_addr_t = usize;
+pub type user_addr_t = u64;
 
 pub type mach_vm_address_t = u64;
 pub type mach_vm_offset_t  = u64;
