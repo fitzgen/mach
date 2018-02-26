@@ -73,7 +73,7 @@ extern "C" {
                                 new_behavior: vm_behavior_t) -> kern_return_t;
 
     pub fn mach_vm_map(target_task: vm_task_entry_t,
-                       inout: mach_vm_address_t,
+                       inout: *mut mach_vm_address_t,
                        size: mach_vm_size_t,
                        mask: mach_vm_offset_t,
                        flags: ::libc::c_int,
@@ -122,9 +122,9 @@ extern "C" {
                           infoCnt: *mut mach_msg_type_number_t,
                           object_name: *mut mach_port_t) -> kern_return_t;
 
-    pub fn mach_make_memory_entry(target_task: vm_task_entry_t,
-                                  size: *mut memory_object_size_t,
-                                  offset: memory_object_offset_t,
+    pub fn mach_make_memory_entry(target_task: vm_map_t,
+                                  size: *mut vm_size_t,
+                                  offset: vm_offset_t,
                                   permission: vm_prot_t,
                                   object_handle: *mut mem_entry_name_port_t,
                                   parent_handle: mem_entry_name_port_t) -> kern_return_t;

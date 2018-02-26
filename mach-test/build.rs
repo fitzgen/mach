@@ -48,6 +48,7 @@ fn main() {
         .header("mach/memory_object_types.h")
         .header("mach/message.h")
         .header("mach/port.h")
+        .header("mach/mach_init.h")
         .header("mach/i386/_structs.h")
         //.header("mach/task.defs")
         .header("mach/task.h")
@@ -115,28 +116,12 @@ fn main() {
         }
     });
 
+
     cfg.skip_fn(|s| {
         match s {
-            // FIXME: not found in /usr/include/mach but maybe in
-            // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
-            "mach_task_self" |
-
-            // FIXME: incompatible function type:
-            // 'int  (unsigned int, unsigned long long, unsigned long, unsigned int)'
-            // vs
-            // 'void (unsigned int, unsigned long long, unsigned long, unsigned int)'
-            //"mach_vm_write" |
-
-            // FIXME: incompatible function type:
-            // 'int (unsigned int, unsigned long long *, unsigned long long, unsigned long long, int, unsigned int, unsigned long long, unsigned int, int, int, unsigned int)'
-            // vs
-            // 'int (unsigned int, unsigned long long, unsigned long long, unsigned long long, int, unsigned int, unsigned long long, unsigned int, int, int, unsigned int)'
-            "mach_vm_map" |
-            // FIXME: incompatible function type:
-            // 'int (unsigned int, unsigned long *, unsigned long, int, unsigned int *, unsigned int)'
-            // 'int (*)(unsigned int, unsigned long long *, unsigned long long, int, unsigned int *, unsigned int)'
-            "mach_make_memory_entry"
-
+            // mac_task_self and current_tasl are not functions, but macro that map to the
+            // mask_task_self_ static variable:
+            "mach_task_self" | "current_task"
             => true,
             _ => false,
         }

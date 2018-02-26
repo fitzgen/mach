@@ -4,11 +4,20 @@ use kern_return::{kern_return_t};
 use port::{mach_port_name_t, mach_port_t};
 
 extern "C" {
-    pub fn mach_task_self() -> mach_port_t;
+    static mach_task_self_: mach_port_t;
     pub fn task_for_pid(target_tport: mach_port_name_t,
                         pid: ::libc::c_int,
                         tn: *mut mach_port_name_t) -> kern_return_t;
 }
+
+pub fn mach_task_self() -> mach_port_t {
+    unsafe { mach_task_self_ }
+}
+
+pub fn current_task() -> mach_port_t {
+    mach_task_self()
+}
+
 
 #[cfg(test)]
 mod tests {
