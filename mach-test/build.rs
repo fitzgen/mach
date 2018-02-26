@@ -105,12 +105,6 @@ fn main() {
             // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
             "ipc_port_t" |
 
-            // FIXME: type duplicated multiple times inside the library.
-            "task_name_t" |
-
-            // FIXME (686): align: rust: 4 (0x4) != c 8 (0x8)
-            "bad user_addr_t" |
-
             // FIXME (x86_64):
             // * size: rust: 40 (0x28) != c 36 (0x24)
             // * align: rust: 8 (0x8) != c 4 (0x4)
