@@ -7,7 +7,7 @@ pub const VM_PURGABLE_GET_STATE: vm_purgable_t = 1;
 
 pub const VM_VOLATILE_GROUP_SHIFT: ::libc::c_int   = 8;
 pub const VM_VOLATILE_GROUP_MASK: ::libc::c_int    = (7 << VM_VOLATILE_GROUP_SHIFT);
-pub const VM_VOLATILE_GROUP_DEFAULT: ::libc::c_int = VM_VOLATILE_GROUP_7;
+pub const VM_VOLATILE_GROUP_DEFAULT: ::libc::c_int = VM_VOLATILE_GROUP_0;
 
 pub const VM_VOLATILE_GROUP_0: ::libc::c_int = (0 << VM_VOLATILE_GROUP_SHIFT);
 pub const VM_VOLATILE_GROUP_1: ::libc::c_int = (1 << VM_VOLATILE_GROUP_SHIFT);

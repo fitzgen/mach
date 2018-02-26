@@ -45,7 +45,7 @@ pub const VM_PAGE_INFO_BASIC: vm_page_info_flavor_t = 1;
 
 pub const VM_REGION_BASIC_INFO_64: vm_region_flavor_t = 9;
 pub const VM_REGION_BASIC_INFO: vm_region_flavor_t    = 10;
-pub const VM_REGION_EXTENDED_INFO: vm_region_flavor_t = 11;
+pub const VM_REGION_EXTENDED_INFO: vm_region_flavor_t = 13;
 pub const VM_REGION_TOP_INFO: vm_region_flavor_t      = 12;
 
 pub const SM_COW: ::libc::c_uchar             = 1;
