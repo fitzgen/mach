@@ -5,7 +5,7 @@ use kern_return::{kern_return_t};
 use memory_object_types::{memory_object_offset_t, memory_object_size_t};
 use message::{mach_msg_type_number_t};
 use port::{mach_port_t};
-use types::{mem_entry_name_port_t, vm_task_entry_t};
+use mach_types::{mem_entry_name_port_t, vm_task_entry_t};
 use vm_attributes::{vm_machine_attribute_t, vm_machine_attribute_val_t};
 use vm_behavior::{vm_behavior_t};
 use vm_inherit::{vm_inherit_t};

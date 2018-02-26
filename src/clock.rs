@@ -2,7 +2,7 @@
 
 pub const clock_MSG_COUNT: ::libc::c_int = 3;
 
-use types::{clock_serv_t, clock_reply_t};
+use mach_types::{clock_serv_t, clock_reply_t};
 use clock_types::{mach_timespec_t, clock_flavor_t, clock_attr_t, alarm_type_t};
 use kern_return::kern_return_t;
 use message::mach_msg_type_number_t;
