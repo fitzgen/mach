@@ -129,8 +129,8 @@ fn main() {
 
     cfg.skip_const(move |s| {
         match s {
-            //"VM_REGION_EXTENDED_INFO" used to have a value of 11 until MacOSX
-            // 10.8 and changed to a value of 13 in MacOSX 10.9 ~ Xcode 6.4
+            // Used to have a value of 11 until MacOSX 10.8 and changed to a
+            // value of 13 in MacOSX 10.9 ~ Xcode 6.4
             "VM_REGION_EXTENDED_INFO"
                 if xcode < Xcode(6, 4) => true,
             // Added in MacOSX 10.11.0 (Xcode 7.3)
