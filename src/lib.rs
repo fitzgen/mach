@@ -12,6 +12,7 @@ pub mod boolean;
 pub mod bootstrap;
 pub mod clock;
 pub mod clock_priv;
+pub mod clock_reply;
 pub mod clock_types;
 pub mod kern_return;
 pub mod mach_port;
