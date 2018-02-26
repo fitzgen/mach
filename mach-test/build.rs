@@ -157,6 +157,12 @@ fn main() {
             // array types:
             "vm_region_info_data_t" |
             "mach_vm_read_entry_t" |
+            "name_t" |
+            "cmd_t" |
+            "name_array_t" |
+            "bootstrap_status_array_t" |
+            "bootstrap_property_array_t" |
+            "bool_array_t" |
 
             // pointer types:
             "clock_attr_t" |

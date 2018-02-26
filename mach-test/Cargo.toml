@@ -9,7 +9,8 @@ mach = { path = ".." }
 libc = "0.2"
 
 [build-dependencies]
-ctest = { git = "https://github.com/alexcrichton/ctest" }
+#ctest = { git = "https://github.com/alexcrichton/ctest" }
+ctest = { path = "../../ctest" }
 
 [[test]]
 name = "main"
