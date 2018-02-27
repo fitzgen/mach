@@ -16,7 +16,7 @@ use mach::task::{task_resume, task_suspend, task_threads};
 use mach::thread_act::{thread_get_state};
 use mach::thread_status::{x86_THREAD_STATE64};
 use mach::traps::{mach_task_self, task_for_pid};
-use mach::types::{task_t, thread_act_array_t};
+use mach::mach_types::{task_t, thread_act_array_t};
 
 use std::io::prelude::*;
 
