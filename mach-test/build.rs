@@ -47,7 +47,7 @@ fn main() {
         .header("mach/clock_reply.h")
         .header("mach/clock_types.h");
 
-    if xcode > Xcode(8, 0) {
+    if xcode >= Xcode(8, 0) {
         cfg.header("mach/dyld_kernel.h");
     }
 
@@ -104,9 +104,13 @@ fn main() {
         .header("mach/thread_act.h")
         .header("mach/thread_info.h")
         .header("mach/thread_policy.h")
-        .header("mach/thread_special_ports.h")
-        .header("mach/thread_state.h")
-        .header("mach/thread_status.h")
+        .header("mach/thread_special_ports.h");
+
+    if xcode >= Xcode(7, 0) {
+        cfg.header("mach/thread_state.h")
+    }
+
+    cfg.header("mach/thread_status.h")
         .header("mach/thread_switch.h")
         .header("mach/time_value.h")
         .header("mach/vm_attributes.h")
