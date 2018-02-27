@@ -107,7 +107,7 @@ fn main() {
         .header("mach/thread_special_ports.h");
 
     if xcode >= Xcode(7, 0) {
-        cfg.header("mach/thread_state.h")
+        cfg.header("mach/thread_state.h");
     }
 
     cfg.header("mach/thread_status.h")
