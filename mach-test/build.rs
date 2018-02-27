@@ -145,7 +145,14 @@ fn main() {
             "vm_region_submap_info_64" |
             "vm_region_submap_short_info_64" |
             "mach_vm_read_entry"
-            => true,
+                => true,
+
+            // These are not available in previous MacOSX versions:
+            "dyld_kernel_image_info" |
+            "dyld_kernel_process_info" |
+            "fsid" |
+            "fsobj_id"
+            if xcode < Xcode(8, 0) => true,
             _ => false,
         }
     });
@@ -162,7 +169,17 @@ fn main() {
             "vm_region_submap_info_data_64_t"|
             "vm_region_submap_short_info_data_64_t" |
             "mach_vm_read_entry_t"
-              => true,
+                => true,
+
+            // These are not available in previous MacOSX versions
+            "dyld_kernel_image_info_t" |
+            "dyld_kernel_process_info_t" |
+            "dyld_kernel_image_info_array_t" |
+            "uuid_t" |
+            "fsid_t" |
+            "fsobj_id_t"
+            if xcode < Xcode(8, 0) => true,
+
             _ => false,
         }
     });
