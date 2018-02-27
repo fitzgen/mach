@@ -176,6 +176,8 @@ fn main() {
 
     cfg.skip_const(move |s| {
         match s {
+            // Available only in MacOSX >= 10.13
+            "EXC_CORPSE_VARIANT_BIT" => true,
             // Used to have a value of 11 until MacOSX 10.8 and changed to a
             // value of 13 in MacOSX 10.9 ~ Xcode 6.4
             "VM_REGION_EXTENDED_INFO"
