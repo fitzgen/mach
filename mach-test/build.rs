@@ -93,9 +93,13 @@ fn main() {
         .header("mach/sync.h")
         .header("mach/sync_policy.h")
         .header("mach/task.h")
-        .header("mach/task_info.h")
-        .header("mach/task_inspect.h")
-        .header("mach/task_policy.h")
+        .header("mach/task_info.h");
+
+    if xcode >= Xcode(9, 0) {
+        cfg.header("mach/task_inspect.h");
+    }
+
+    cfg.header("mach/task_policy.h")
         .header("mach/task_special_ports.h")
         .header("mach/thread_act.h")
         .header("mach/thread_info.h")
