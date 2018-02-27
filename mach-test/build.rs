@@ -212,6 +212,10 @@ fn main() {
                 if xcode < Xcode(7, 3) => true,
             // Removed after MacOSX 10.6 (does not appear in MacOSX 10.7)
             "VM_PROT_TRUSTED" if xcode > Xcode(4, 3) => true,
+            // Added after MacOSX 10.9 ~ Xcode 6.4
+            "EXC_CORPSE_NOTIFY" |
+            "EXC_MASK_CORPSE_NOTIFY"
+                if xcode <= Xcode(7, 0) => true,
             _ => false,
         }
     });
