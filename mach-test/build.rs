@@ -123,7 +123,7 @@ fn main() {
         .header("mach/vm_task.h")
         .header("mach/vm_types.h");
 
-    cfg.skip_struct(|s| {
+    cfg.skip_struct(move |s| {
         match s {
             // TODO: this type is a bitfield and must be verified by hand
             "mach_msg_port_descriptor_t" |
@@ -157,7 +157,7 @@ fn main() {
         }
     });
 
-    cfg.skip_type(|s| {
+    cfg.skip_type(move |s| {
         match s {
             // FIXME: this type is not exposed in /usr/include/mach
             // but seems to be exposed in
