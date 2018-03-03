@@ -8,7 +8,7 @@ set -ex
 echo "Running tests for target: ${TARGET}"
 export RUST_BACKTRACE=1
 export RUST_TEST_THREADS=1
-
+export RUST_TEST_NOCAPTURE=1
 
 if [[ $TARGET == *"ios"* ]]; then
     export RUSTFLAGS='-C link-args=-mios-simulator-version-min=7.0'

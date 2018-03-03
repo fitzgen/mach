@@ -3,7 +3,7 @@
 use kern_return::{kern_return_t};
 use message::{mach_msg_type_name_t};
 use port::{mach_port_name_t, mach_port_right_t, mach_port_t};
-use types::{ipc_space_t};
+use mach_types::{ipc_space_t};
 
 extern "C" {
     pub fn mach_port_allocate(task: ipc_space_t, right: mach_port_right_t,
