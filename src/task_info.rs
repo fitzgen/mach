@@ -34,7 +34,8 @@ pub const TASK_DEBUG_INFO_INTERNAL: ::libc::c_uint = 29;
 pub type task_flavor_t = natural_t;
 pub type task_info_t = *mut integer_t;
 
-#[repr(C, packed(4))]
+#[repr(C)]
+#[cfg_attr(feature = "unstable", repr(packed(4)))]
 pub struct task_dyld_info {
     pub all_image_info_addr: mach_vm_address_t,
     pub all_image_info_size: mach_vm_size_t,

@@ -18,5 +18,7 @@ default-features = false
 [features]
 default = [ "use_std", "deprecated" ]
 use_std = [ "libc/use_std" ]
+# Enables unstable / nightly-only features
+unstable = []
 # Enables deprecated and removed APIs.
 deprecated = []
