@@ -5,7 +5,7 @@ matrix:
   include:
     # x86_64-apple-darwin
     - env: TARGET=x86_64-apple-darwin
-      rust: 1.11.0
+      rust: 1.13.0
       os: osx
       osx_image: xcode8.3
     - env: TARGET=x86_64-apple-darwin
@@ -31,7 +31,7 @@ matrix:
 
     # i686-apple-darwin
     - env: TARGET=i686-apple-darwin
-      rust: 1.11.0
+      rust: 1.13.0
       os: osx
       osx_image: xcode8.3
     - env: TARGET=i686-apple-darwin
@@ -57,7 +57,7 @@ matrix:
 
     # x86_64-apple-ios
     - env: TARGET=x86_64-apple-ios NORUN=1
-      rust: 1.11.0
+      rust: 1.13.0
       os: osx
       osx_image: xcode8.3
     - env: TARGET=x86_64-apple-ios NORUN=1
@@ -83,7 +83,7 @@ matrix:
 
     # i386-apple-ios
     - env: TARGET=i386-apple-ios NORUN=1
-      rust: 1.11.0
+      rust: 1.13.0
       os: osx
       osx_image: xcode8.3
     - env: TARGET=i386-apple-ios NORUN=1
@@ -109,7 +109,7 @@ matrix:
 
     # aarch64-apple-ios
     - env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
-      rust: 1.11.0
+      rust: 1.13.0
       os: osx
       osx_image: xcode8.3
     - env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
@@ -135,7 +135,7 @@ matrix:
 
     # armv7-apple-ios
     - env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
-      rust: 1.11.0
+      rust: 1.13.0
       os: osx
       osx_image: xcode8.3
     - env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
