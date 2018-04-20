@@ -141,15 +141,7 @@ fn main() {
             // FIXME: this type is not exposed in /usr/include/mach
             // but seems to be exposed in
             // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
-            "ipc_port" |
-
-            // FIXME: should use repr(packed(4))
-            "task_dyld_info" |
-            "vm_region_basic_info_64" |
-            "vm_region_submap_info_64" |
-            "vm_region_submap_short_info_64" |
-            "mach_vm_read_entry"
-                => true,
+            "ipc_port" => true,
 
             // These are not available in previous MacOSX versions:
             "dyld_kernel_image_info" |
@@ -166,14 +158,7 @@ fn main() {
             // FIXME: this type is not exposed in /usr/include/mach
             // but seems to be exposed in
             // SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach
-            "ipc_port_t" |
-
-            // FIXME: corresponding struct should use repr(packed(4))
-            "vm_region_basic_info_data_64_t" |
-            "vm_region_submap_info_data_64_t"|
-            "vm_region_submap_short_info_data_64_t" |
-            "mach_vm_read_entry_t"
-                => true,
+            "ipc_port_t" => true,
 
             // These are not available in previous MacOSX versions
             "dyld_kernel_image_info_t" |

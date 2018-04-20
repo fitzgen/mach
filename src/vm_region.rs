@@ -57,9 +57,8 @@ pub const SM_PRIVATE_ALIASED: ::libc::c_uchar = 6;
 pub const SM_SHARED_ALIASED: ::libc::c_uchar  = 7;
 
 #[repr(C)]
+#[cfg_attr(feature = "unstable", repr(packed(4)))]
 #[derive(Copy, Clone, Debug)]
-// Undefined behavior: should be #[repr(packed(4))] once
-// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct vm_region_basic_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -163,9 +162,8 @@ impl vm_region_submap_info {
 }
 
 #[repr(C)]
+#[cfg_attr(feature = "unstable", repr(packed(4)))]
 #[derive(Copy, Clone, Debug)]
-// Undefined behavior: should be #[repr(packed(4))] once
-// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct vm_region_submap_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -194,9 +192,8 @@ impl vm_region_submap_info_64 {
 }
 
 #[repr(C)]
+#[cfg_attr(feature = "unstable", repr(packed(4)))]
 #[derive(Copy, Clone, Debug)]
-// Undefined behavior: should be #[repr(packed(4))] once
-// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct vm_region_submap_short_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -237,9 +234,8 @@ impl vm_page_info_basic {
 }
 
 #[repr(C)]
+#[cfg_attr(feature = "unstable", repr(packed(4)))]
 #[derive(Copy, Clone, Debug)]
-// Undefined behavior: should be #[repr(packed(4))] once
-// that is stable: https://github.com/rust-lang/rust/issues/33158
 pub struct mach_vm_read_entry {
     pub address: mach_vm_address_t,
     pub size: mach_vm_size_t,
