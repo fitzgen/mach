@@ -8,10 +8,10 @@ The following table describes the current CI set-up:
 
 | Target                | Min. Rust |   XCode   | build | ctest | run |
 |-----------------------|-----------|-----------|-------|-------|-----|
-| `x86_64-apple-darwin` |  1.11.0   | 6.4 - 9.2 | ✓     | ✓     | ✓   | 
-| `i686-apple-darwin`   |  1.11.0   | 6.4 - 9.2 | ✓     | ✓     | ✓   |
-| `i386-apple-ios`      |  1.11.0   | 6.4 - 9.2 | ✓     | ✓ [0] | -   |
-| `x86_64-apple-ios`    |  1.11.0   | 6.4 - 9.2 | ✓     | ✓ [0] | -   |
+| `x86_64-apple-darwin` |  1.13.0   | 6.4 - 9.2 | ✓     | ✓     | ✓   | 
+| `i686-apple-darwin`   |  1.13.0   | 6.4 - 9.2 | ✓     | ✓     | ✓   |
+| `i386-apple-ios`      |  1.13.0   | 6.4 - 9.2 | ✓     | ✓ [0] | -   |
+| `x86_64-apple-ios`    |  1.13.0   | 6.4 - 9.2 | ✓     | ✓ [0] | -   |
 | `armv7-apple-ios`     |  nightly  | 6.4 - 9.2 | ✓     | -     | -   |
 | `aarch64-apple-ios`   |  nigthly  | 6.4 - 9.2 | ✓     | -     | -   |
 
