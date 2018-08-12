@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/fitzgen/mach.png?branch=master)](https://travis-ci.org/fitzgen/mach)
+[![Build Status][travis_ci_badge]][travis_ci] [![Latest Version]][crates.io] [![docs]][docs.rs]
 
 A Rust interface to the **user-space** API of the Mach 3.0 kernel exposed in
 `/usr/include/mach` and that underlies macOS.
@@ -27,3 +27,11 @@ The following table describes the current CI set-up:
 | `aarch64-apple-ios`   |  nightly  | 6.4 - 9.4 | ✓     | -     | -   |
 
 [0] `ctest` is only run on iOS for XCode 8.3 version and newer.
+
+[travis_ci]: https://travis-ci.org/fitzgen/mach
+[travis_ci_badge]: https://travis-ci.org/fitzgen/mach.png?branch=master
+[crates.io]: https://crates.io/crates/mach
+[Latest Version]: https://img.shields.io/crates/v/mach.svg
+[docs]: https://docs.rs/mach/badge.svg
+[docs.rs]: https://docs.rs/mach/
+
