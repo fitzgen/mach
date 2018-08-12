@@ -11,11 +11,11 @@ matrix:
     - env: TARGET=x86_64-apple-darwin
       rust: beta
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=x86_64-apple-darwin
       rust: nightly
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=x86_64-apple-darwin
       rust: nightly
       os: osx
@@ -37,11 +37,11 @@ matrix:
     - env: TARGET=i686-apple-darwin
       rust: beta
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=i686-apple-darwin
       rust: nightly
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=i686-apple-darwin
       rust: nightly
       os: osx
@@ -63,11 +63,11 @@ matrix:
     - env: TARGET=x86_64-apple-ios NORUN=1
       rust: beta
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=x86_64-apple-ios NORUN=1
       rust: nightly
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=x86_64-apple-ios NORUN=1
       rust: nightly
       os: osx
@@ -89,11 +89,11 @@ matrix:
     - env: TARGET=i386-apple-ios NORUN=1
       rust: beta
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=i386-apple-ios NORUN=1
       rust: nightly
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=i386-apple-ios NORUN=1
       rust: nightly
       os: osx
@@ -115,11 +115,11 @@ matrix:
     - env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
       rust: beta
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
       rust: nightly
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
       rust: nightly
       os: osx
@@ -141,11 +141,11 @@ matrix:
     - env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
       rust: beta
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
       rust: nightly
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode9.2
     - env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
       rust: nightly
       os: osx
