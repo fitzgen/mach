@@ -1,7 +1,7 @@
 [![Build Status][travis_ci_badge]][travis_ci] [![Latest Version]][crates.io] [![docs]][docs.rs]
 
 A Rust interface to the **user-space** API of the Mach 3.0 kernel exposed in
-`/usr/include/mach` and that underlies macOS.
+`/usr/include/mach` that underlies macOS.
 
 This library does not expose the **kernel-space** API of the Mach 3.0 kernel
 exposed in
