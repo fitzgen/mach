@@ -287,7 +287,7 @@ fn main() {
         }
     });
 
-    cfg.type_name(|ty, is_struct| match ty {
+    cfg.type_name(|ty, is_struct, _is_union| match ty {
         // struct foo in Rust should translate to struct foo in C:
         "vm_region_basic_info_64"
         | "vm_region_basic_info"
