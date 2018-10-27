@@ -65,7 +65,7 @@ pub const SM_SHARED_ALIASED: ::libc::c_uchar = 7;
         note = "requires the unstable feature to avoid undefined behavior"
     )
 )]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_region_basic_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -84,7 +84,7 @@ impl vm_region_basic_info_64 {
 }
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_region_basic_info {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -103,7 +103,7 @@ impl vm_region_basic_info {
 }
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_region_extended_info {
     pub protection: vm_prot_t,
     pub user_tag: ::libc::c_uint,
@@ -125,7 +125,7 @@ impl vm_region_extended_info {
 }
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_region_top_info {
     pub obj_id: ::libc::c_uint,
     pub ref_count: ::libc::c_uint,
@@ -141,7 +141,7 @@ impl vm_region_top_info {
 }
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_region_submap_info {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -177,7 +177,7 @@ impl vm_region_submap_info {
         note = "requires the `unstable` feature to avoid undefined behavior"
     )
 )]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_region_submap_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -214,7 +214,7 @@ impl vm_region_submap_info_64 {
         note = "requires the `unstable` feature to avoid undefined behavior"
     )
 )]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_region_submap_short_info_64 {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
@@ -238,7 +238,7 @@ impl vm_region_submap_short_info_64 {
 }
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_page_info_basic {
     pub disposition: ::libc::c_int,
     pub ref_count: ::libc::c_int,
@@ -263,7 +263,7 @@ impl vm_page_info_basic {
         note = "requires the `unstable` feature to avoid undefined behavior"
     )
 )]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct mach_vm_read_entry {
     pub address: mach_vm_address_t,
     pub size: mach_vm_size_t,

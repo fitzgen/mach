@@ -5,7 +5,7 @@ use core::mem;
 use message::mach_msg_type_number_t;
 
 #[repr(C)]
-#[derive(Clone, Debug, Default)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct x86_thread_state64_t {
     pub __rax: u64,
     pub __rbx: u64,

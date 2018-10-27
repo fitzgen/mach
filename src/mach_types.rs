@@ -90,7 +90,7 @@ pub type uuid_t = [::libc::c_uchar; 16];
 
 // <sys/_types/_fsid_t.h>
 #[repr(C)]
-#[derive(Debug, Default, Copy, Clone, Hash, PartialOrd, PartialEq)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct fsid {
     pub val: [i32; 2],
 }
@@ -98,7 +98,7 @@ pub type fsid_t = fsid;
 
 // <sys/_types/_fsobj_id_t.h>
 #[repr(C)]
-#[derive(Debug, Default, Copy, Clone, Hash, PartialOrd, PartialEq)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct fsobj_id {
     pub fid_objno: u32,
     pub fid_generation: u32,

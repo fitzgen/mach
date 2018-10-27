@@ -45,6 +45,7 @@ pub const VM_FLAGS_ANYWHERE: ::libc::c_int = 0x1;
 pub const VM_FLAGS_OVERWRITE: ::libc::c_int = 0x4000;
 
 #[repr(C)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_statistics {
     pub free_count: natural_t,
     pub active_count: natural_t,
@@ -69,6 +70,7 @@ pub struct vm_statistics {
     note = "`pmap_statistics` was removed after MacOSX 10.3.9"
 )]
 #[repr(C)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct pmap_statistics {
     pub resident_count: integer_t,
     pub wired_count: integer_t,

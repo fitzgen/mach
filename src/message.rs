@@ -131,7 +131,7 @@ pub const MACH_RCV_INVALID_TRAILER: mach_msg_return_t = 0x1000_400f;
 pub const MACH_RCV_IN_PROGRESS_TIMED: mach_msg_return_t = 0x1000_4011;
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct mach_msg_header_t {
     pub msgh_bits: mach_msg_bits_t,
     pub msgh_size: mach_msg_size_t,
@@ -142,13 +142,13 @@ pub struct mach_msg_header_t {
 }
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct mach_msg_body_t {
     pub msgh_descriptor_count: mach_msg_size_t,
 }
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct mach_msg_base_t {
     pub header: mach_msg_header_t,
     pub body: mach_msg_body_t,
@@ -157,14 +157,14 @@ pub struct mach_msg_base_t {
 pub const MACH_MSG_TRAILER_FORMAT_0: mach_msg_trailer_type_t = 0;
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct mach_msg_trailer_t {
     pub msgh_trailer_type: mach_msg_trailer_type_t,
     pub msgh_trailer_size: mach_msg_trailer_size_t,
 }
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct mach_msg_port_descriptor_t {
     pub name: mach_port_t,
     pub pad1: mach_msg_size_t,
@@ -186,7 +186,7 @@ impl mach_msg_port_descriptor_t {
 }
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct mach_msg_ool_descriptor_t {
     pub address: *mut ::libc::c_void,
     #[cfg(not(target_pointer_width = "64"))]
@@ -218,7 +218,7 @@ impl mach_msg_ool_descriptor_t {
 }
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct mach_msg_ool_ports_descriptor_t {
     pub address: *mut ::libc::c_void,
     #[cfg(not(target_pointer_width = "64"))]

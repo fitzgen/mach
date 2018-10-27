@@ -7,8 +7,8 @@ pub type clock_flavor_t = ::libc::c_int;
 pub type clock_attr_t = *mut ::libc::c_int;
 pub type clock_res_t = ::libc::c_int;
 
-#[derive(Copy, Clone, PartialEq, PartialOrd, Eq, Ord, Debug, Hash)]
 #[repr(C)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct mach_timespec {
     pub tv_sec: ::libc::c_uint,
     pub tv_nsec: clock_res_t,
