@@ -11,9 +11,11 @@ use vm_behavior::vm_behavior_t;
 use vm_inherit::vm_inherit_t;
 use vm_prot::vm_prot_t;
 use vm_purgable::vm_purgable_t;
-use vm_region::*;
 use vm_sync::vm_sync_t;
 use vm_types::*;
+
+#[cfg_attr(not(feature = "unstable"), allow(deprecated))]
+use vm_region::*;
 
 extern "C" {
     pub fn mach_vm_allocate(
@@ -52,6 +54,14 @@ extern "C" {
         dataCnt: *mut mach_msg_type_number_t,
     ) -> kern_return_t;
 
+    #[cfg_attr(
+        not(feature = "unstable"),
+        deprecated(
+            since = "0.2.3",
+            note = "requires the `unstable` feature to avoid undefined behavior"
+        )
+    )]
+    #[cfg_attr(not(feature = "unstable"), allow(deprecated))]
     pub fn mach_vm_read_list(
         target_task: vm_task_entry_t,
         data_list: mach_vm_read_entry_t,
@@ -216,6 +226,7 @@ mod tests {
         }
     }
 
+    #[cfg_attr(not(feature = "unstable"), allow(deprecated))]
     #[test]
     fn mach_vm_region_sanity() {
         unsafe {

@@ -43,6 +43,7 @@ pub type task_info_t = *mut integer_t;
         note = "requires the unstable feature to avoid undefined behavior"
     )
 )]
+#[cfg_attr(not(feature = "unstable"), allow(deprecated))]
 #[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct task_dyld_info {
     pub all_image_info_addr: mach_vm_address_t,
