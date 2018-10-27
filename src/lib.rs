@@ -2,6 +2,15 @@
 #![allow(non_upper_case_globals)]
 #![cfg_attr(not(feature = "use_std"), no_std)]
 #![cfg_attr(feature = "unstable", feature(repr_packed))]
+#![cfg_attr(
+    feature = "cargo-clippy",
+    allow(
+        clippy::stutter,
+        clippy::cast_sign_loss,
+        clippy::cast_possible_truncation,
+        clippy::trivially_copy_pass_by_ref
+    )
+)]
 
 #[cfg(feature = "use_std")]
 extern crate core;

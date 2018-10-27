@@ -5,7 +5,7 @@ use core::mem;
 use message::mach_msg_type_number_t;
 
 #[repr(C)]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct x86_thread_state64_t {
     pub __rax: u64,
     pub __rbx: u64,
@@ -31,8 +31,8 @@ pub struct x86_thread_state64_t {
 }
 
 impl x86_thread_state64_t {
-    pub fn new() -> x86_thread_state64_t {
-        x86_thread_state64_t {
+    pub fn new() -> Self {
+        Self {
             __rax: 0,
             __rbx: 0,
             __rcx: 0,
@@ -58,7 +58,6 @@ impl x86_thread_state64_t {
     }
 
     pub fn count() -> mach_msg_type_number_t {
-        (mem::size_of::<x86_thread_state64_t>() / mem::size_of::<::libc::c_int>())
-            as mach_msg_type_number_t
+        (mem::size_of::<Self>() / mem::size_of::<::libc::c_int>()) as mach_msg_type_number_t
     }
 }

@@ -3,7 +3,7 @@
 pub type vm_prot_t = ::libc::c_int;
 
 pub const VM_PROT_NONE: vm_prot_t = 0;
-pub const VM_PROT_READ: vm_prot_t = (1 << 0);
+pub const VM_PROT_READ: vm_prot_t = 1;
 pub const VM_PROT_WRITE: vm_prot_t = (1 << 1);
 pub const VM_PROT_EXECUTE: vm_prot_t = (1 << 2);
 pub const VM_PROT_NO_CHANGE: vm_prot_t = (1 << 3);
