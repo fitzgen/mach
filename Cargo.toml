@@ -1,6 +1,6 @@
 [package]
 name = "mach"
-version = "0.2.2"
+version = "0.2.3"
 authors = ["Nick Fitzgerald <fitzgen@gmail.com>", "David Cuddeback <david.cuddeback@gmail.com>"]
 license = "BSD-2-Clause"
 description = "A Rust interface to the user-space API of the Mach 3.0 kernel that underlies OSX."
