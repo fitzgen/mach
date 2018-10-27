@@ -2,12 +2,12 @@
 
 use core::mem;
 
-use boolean::{boolean_t};
+use boolean::boolean_t;
 use memory_object_types::{memory_object_offset_t, vm_object_id_t};
-use message::{mach_msg_type_number_t};
-use vm_behavior::{vm_behavior_t};
-use vm_inherit::{vm_inherit_t};
-use vm_prot::{vm_prot_t};
+use message::mach_msg_type_number_t;
+use vm_behavior::vm_behavior_t;
+use vm_inherit::vm_inherit_t;
+use vm_prot::vm_prot_t;
 use vm_types::{mach_vm_address_t, mach_vm_size_t};
 
 pub type vm32_object_id_t = ::libc::uint32_t;
@@ -44,17 +44,17 @@ pub const VM_MAP_ENTRY_MAX: ::libc::c_int = (1 << 8);
 pub const VM_PAGE_INFO_BASIC: vm_page_info_flavor_t = 1;
 
 pub const VM_REGION_BASIC_INFO_64: vm_region_flavor_t = 9;
-pub const VM_REGION_BASIC_INFO: vm_region_flavor_t    = 10;
+pub const VM_REGION_BASIC_INFO: vm_region_flavor_t = 10;
 pub const VM_REGION_EXTENDED_INFO: vm_region_flavor_t = 13;
-pub const VM_REGION_TOP_INFO: vm_region_flavor_t      = 12;
+pub const VM_REGION_TOP_INFO: vm_region_flavor_t = 12;
 
-pub const SM_COW: ::libc::c_uchar             = 1;
-pub const SM_PRIVATE: ::libc::c_uchar         = 2;
-pub const SM_EMPTY: ::libc::c_uchar           = 3;
-pub const SM_SHARED: ::libc::c_uchar          = 4;
-pub const SM_TRUESHARED: ::libc::c_uchar      = 5;
+pub const SM_COW: ::libc::c_uchar = 1;
+pub const SM_PRIVATE: ::libc::c_uchar = 2;
+pub const SM_EMPTY: ::libc::c_uchar = 3;
+pub const SM_SHARED: ::libc::c_uchar = 4;
+pub const SM_TRUESHARED: ::libc::c_uchar = 5;
 pub const SM_PRIVATE_ALIASED: ::libc::c_uchar = 6;
-pub const SM_SHARED_ALIASED: ::libc::c_uchar  = 7;
+pub const SM_SHARED_ALIASED: ::libc::c_uchar = 7;
 
 #[repr(C)]
 #[cfg_attr(feature = "unstable", repr(packed(4)))]
@@ -240,4 +240,3 @@ pub struct mach_vm_read_entry {
     pub address: mach_vm_address_t,
     pub size: mach_vm_size_t,
 }
-

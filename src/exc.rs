@@ -1,10 +1,10 @@
 //! This module roughly corresponds to `mach/exc.h`.
 
-use port::mach_port_t;
+use exception_types::{exception_data_t, exception_type_t};
 use kern_return::kern_return_t;
 use message::mach_msg_type_number_t;
+use port::mach_port_t;
 use thread_status::thread_state_t;
-use exception_types::{exception_type_t, exception_data_t};
 
 pub const exc_MSG_COUNT: ::libc::c_uint = 3;
 

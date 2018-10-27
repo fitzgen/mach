@@ -7,7 +7,9 @@ impl Xcode {
     fn version() -> Xcode {
         use std::process::Command;
         let out = Command::new("/usr/bin/xcodebuild")
-            .arg("-version").output().expect("failed to execute xcodebuild");
+            .arg("-version")
+            .output()
+            .expect("failed to execute xcodebuild");
         let stdout = ::std::str::from_utf8(&out.stdout).expect("couldn't parse stdout as UTF8");
         let stderr = ::std::str::from_utf8(&out.stderr).expect("couldn't parse stderr as UTF8");
 
@@ -21,9 +23,13 @@ impl Xcode {
         //
         // Xcode 9.2
         // Build version 9C40b
-        let mut iter = stdout.split(|c: char| c.is_whitespace() || c == '.').skip(1).map(
-            |c| c.parse().expect("failed to parse Xcode version into number")
-        );
+        let mut iter = stdout
+            .split(|c: char| c.is_whitespace() || c == '.')
+            .skip(1)
+            .map(|c| {
+                c.parse()
+                    .expect("failed to parse Xcode version into number")
+            });
         let major: u32 = iter.next().expect("failed to parse Xcode major version");
         let minor: u32 = iter.next().expect("failed to parse Xcode minor version");
 
@@ -161,25 +167,26 @@ fn main() {
             "ipc_port_t" => true,
 
             // These are not available in previous MacOSX versions
-            "dyld_kernel_image_info_t" |
-            "dyld_kernel_process_info_t" |
-            "dyld_kernel_image_info_array_t" |
-            "uuid_t" |
-            "fsid_t" |
-            "fsobj_id_t"
-            if xcode < Xcode(8, 0) => true,
+            "dyld_kernel_image_info_t"
+            | "dyld_kernel_process_info_t"
+            | "dyld_kernel_image_info_array_t"
+            | "uuid_t"
+            | "fsid_t"
+            | "fsobj_id_t"
+                if xcode < Xcode(8, 0) =>
+            {
+                true
+            }
 
             _ => false,
         }
     });
 
-
     cfg.skip_fn(|s| {
         match s {
             // mac_task_self and current_tasl are not functions, but macro that map to the
             // mask_task_self_ static variable:
-            "mach_task_self" | "current_task"
-            => true,
+            "mach_task_self" | "current_task" => true,
             _ => false,
         }
     });
@@ -190,17 +197,17 @@ fn main() {
             "EXC_CORPSE_VARIANT_BIT" => true,
             // Used to have a value of 11 until MacOSX 10.8 and changed to a
             // value of 13 in MacOSX 10.9 ~ Xcode 6.4
-            "VM_REGION_EXTENDED_INFO"
-                if xcode < Xcode(6, 4) => true,
+            "VM_REGION_EXTENDED_INFO" if xcode < Xcode(6, 4) => true,
             // Added in MacOSX 10.11.0 (Xcode 7.3)
             "TASK_VM_INFO_PURGEABLE_ACCOUNT" | "TASK_FLAGS_INFO" | "TASK_DEBUG_INFO_INTERNAL"
-                if xcode < Xcode(7, 3) => true,
+                if xcode < Xcode(7, 3) =>
+            {
+                true
+            }
             // Removed after MacOSX 10.6 (does not appear in MacOSX 10.7)
             "VM_PROT_TRUSTED" if xcode > Xcode(4, 3) => true,
             // Added after MacOSX 10.9 ~ Xcode 6.4
-            "EXC_CORPSE_NOTIFY" |
-            "EXC_MASK_CORPSE_NOTIFY"
-                if xcode <= Xcode(7, 0) => true,
+            "EXC_CORPSE_NOTIFY" | "EXC_MASK_CORPSE_NOTIFY" if xcode <= Xcode(7, 0) => true,
             _ => false,
         }
     });

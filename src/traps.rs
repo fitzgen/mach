@@ -1,13 +1,15 @@
 //! This module corresponds to `mach/mach_traps.h`.
 
-use kern_return::{kern_return_t};
+use kern_return::kern_return_t;
 use port::{mach_port_name_t, mach_port_t};
 
 extern "C" {
     static mach_task_self_: mach_port_t;
-    pub fn task_for_pid(target_tport: mach_port_name_t,
-                        pid: ::libc::c_int,
-                        tn: *mut mach_port_name_t) -> kern_return_t;
+    pub fn task_for_pid(
+        target_tport: mach_port_name_t,
+        pid: ::libc::c_int,
+        tn: *mut mach_port_name_t,
+    ) -> kern_return_t;
 }
 
 pub unsafe fn mach_task_self() -> mach_port_t {
@@ -20,8 +22,8 @@ pub unsafe fn current_task() -> mach_port_t {
 
 #[cfg(test)]
 mod tests {
-    use traps::*;
     use port::*;
+    use traps::*;
 
     #[test]
     fn mach_task_self_sanity() {

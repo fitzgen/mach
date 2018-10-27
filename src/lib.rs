@@ -1,6 +1,5 @@
 #![allow(non_camel_case_types)]
 #![allow(non_upper_case_globals)]
-
 #![cfg_attr(not(feature = "use_std"), no_std)]
 #![cfg_attr(feature = "unstable", feature(repr_packed))]
 
