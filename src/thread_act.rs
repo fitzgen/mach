@@ -12,3 +12,13 @@ extern "C" {
                             new_state_count: *mut mach_msg_type_number_t)
         -> kern_return_t;
 }
+
+extern "C" {
+    pub fn thread_suspend(target_act: thread_act_t)
+        -> kern_return_t;
+}
+
+extern "C" {
+    pub fn thread_resume(target_act: thread_act_t)
+        -> kern_return_t;
+}

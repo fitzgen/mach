@@ -20,6 +20,7 @@ pub mod dyld_kernel;
 pub mod exc;
 pub mod exception_types;
 pub mod kern_return;
+pub mod mach_init;
 pub mod mach_port;
 pub mod mach_types;
 pub mod memory_object_types;
