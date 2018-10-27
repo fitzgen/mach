@@ -58,6 +58,13 @@ pub const SM_SHARED_ALIASED: ::libc::c_uchar = 7;
 
 #[repr(C)]
 #[cfg_attr(feature = "unstable", repr(packed(4)))]
+#[cfg_attr(
+    not(feature = "unstable"),
+    deprecated(
+        since = "0.2.3",
+        note = "requires the unstable feature to avoid undefined behavior"
+    )
+)]
 #[derive(Copy, Clone, Debug)]
 pub struct vm_region_basic_info_64 {
     pub protection: vm_prot_t,
@@ -163,6 +170,13 @@ impl vm_region_submap_info {
 
 #[repr(C)]
 #[cfg_attr(feature = "unstable", repr(packed(4)))]
+#[cfg_attr(
+    not(feature = "unstable"),
+    deprecated(
+        since = "0.2.3",
+        note = "requires the `unstable` feature to avoid undefined behavior"
+    )
+)]
 #[derive(Copy, Clone, Debug)]
 pub struct vm_region_submap_info_64 {
     pub protection: vm_prot_t,
@@ -193,6 +207,13 @@ impl vm_region_submap_info_64 {
 
 #[repr(C)]
 #[cfg_attr(feature = "unstable", repr(packed(4)))]
+#[cfg_attr(
+    not(feature = "unstable"),
+    deprecated(
+        since = "0.2.3",
+        note = "requires the `unstable` feature to avoid undefined behavior"
+    )
+)]
 #[derive(Copy, Clone, Debug)]
 pub struct vm_region_submap_short_info_64 {
     pub protection: vm_prot_t,
@@ -235,6 +256,13 @@ impl vm_page_info_basic {
 
 #[repr(C)]
 #[cfg_attr(feature = "unstable", repr(packed(4)))]
+#[cfg_attr(
+    not(feature = "unstable"),
+    deprecated(
+        since = "0.2.3",
+        note = "requires the `unstable` feature to avoid undefined behavior"
+    )
+)]
 #[derive(Copy, Clone, Debug)]
 pub struct mach_vm_read_entry {
     pub address: mach_vm_address_t,
