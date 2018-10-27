@@ -69,6 +69,7 @@ pub struct vm_statistics {
     since = "0.2.3",
     note = "`pmap_statistics` was removed after MacOSX 10.3.9"
 )]
+#[cfg_attr(feature = "deprecated", allow(deprecated))]
 #[repr(C)]
 #[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct pmap_statistics {
