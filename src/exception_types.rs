@@ -1,8 +1,8 @@
 //! This module roughly corresponds to `mach/exception_types.h`.
 
-use vm_types::integer_t;
-use thread_status::thread_state_flavor_t;
 use port::mach_port_t;
+use thread_status::thread_state_flavor_t;
+use vm_types::integer_t;
 
 pub const EXC_BAD_ACCESS: ::libc::c_uint = 1;
 pub const EXC_BAD_INSTRUCTION: ::libc::c_uint = 2;

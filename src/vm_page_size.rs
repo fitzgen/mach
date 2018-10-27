@@ -1,6 +1,6 @@
 //! This module roughly corresponds to `mach/vm_page_size.h`
 
-use vm_types::{vm_size_t, mach_vm_size_t, mach_vm_offset_t};
+use vm_types::{mach_vm_offset_t, mach_vm_size_t, vm_size_t};
 
 extern "C" {
     pub static vm_page_size: vm_size_t;

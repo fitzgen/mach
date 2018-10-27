@@ -40,6 +40,6 @@ use mach::vm_sync::*;
 use mach::vm_types::*;
 
 // These types are not re-exported by mach::types but they are required.
-use libc::{c_int, c_ulonglong, c_uchar, c_uint, clock_t};
+use libc::{c_int, c_uchar, c_uint, c_ulonglong, clock_t};
 
 include!(concat!(env!("OUT_DIR"), "/all.rs"));

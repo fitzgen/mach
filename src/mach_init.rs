@@ -3,8 +3,7 @@
 use mach_types::thread_port_t;
 
 extern "C" {
-    pub fn mach_thread_self()
-        -> thread_port_t;
+    pub fn mach_thread_self() -> thread_port_t;
 }
 
 #[cfg(test)]
