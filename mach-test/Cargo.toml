@@ -9,7 +9,7 @@ mach = { path = "..", features = ["unstable"] }
 libc = "0.2"
 
 [build-dependencies]
-ctest = "= 0.2.0"
+ctest = "0.2"
 
 [[test]]
 name = "main"
