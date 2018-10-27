@@ -4,7 +4,7 @@ use boolean::boolean_t;
 use mach_types::{fsid_t, fsobj_id_t, uuid_t};
 
 #[repr(C)]
-#[derive(Debug, Default, Copy, Clone, Hash, PartialOrd, PartialEq)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct dyld_kernel_image_info {
     pub uuid: uuid_t,
     pub fsobjid: fsobj_id_t,
@@ -14,7 +14,7 @@ pub struct dyld_kernel_image_info {
 
 #[allow(non_snake_case)]
 #[repr(C)]
-#[derive(Debug, Default, Copy, Clone, Hash, PartialOrd, PartialEq)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct dyld_kernel_process_info {
     pub cache_image_info: dyld_kernel_image_info,
     pub timestamp: u64,

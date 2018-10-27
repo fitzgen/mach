@@ -5,6 +5,7 @@ use vm_types::natural_t;
 pub type mach_port_name_t = natural_t;
 
 #[repr(C)]
+#[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct ipc_port;
 
 pub type ipc_port_t = *mut ipc_port;
