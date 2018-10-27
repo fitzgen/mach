@@ -4,8 +4,12 @@ use vm_types::{integer_t, natural_t};
 
 pub type vm_statistics_t = *mut vm_statistics;
 pub type vm_statistics_data_t = vm_statistics;
-// `pmap_statistics_t` was removed after MacOSX 10.3.9.
 #[cfg(feature = "deprecated")]
+#[deprecated(
+    since = "0.2.3",
+    note = "`pmap_statistics_t` was removed after MacOSX 10.3.9"
+)]
+#[allow(deprecated)]
 pub type pmap_statistics_t = *mut pmap_statistics;
 
 pub const VM_PAGE_QUERY_PAGE_PRESENT: integer_t = 1;
@@ -59,8 +63,11 @@ pub struct vm_statistics {
     pub speculative_count: natural_t,
 }
 
-// `pmap_statistics` was removed after MacOSX 10.3.9.
 #[cfg(feature = "deprecated")]
+#[deprecated(
+    since = "0.2.3",
+    note = "`pmap_statistics` was removed after MacOSX 10.3.9"
+)]
 #[repr(C)]
 pub struct pmap_statistics {
     pub resident_count: integer_t,
