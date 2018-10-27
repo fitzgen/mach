@@ -25,9 +25,9 @@ pub const CLOCK_ALARM_MINRES: ::libc::c_uint = 4;
 pub const CLOCK_ALARM_MAXRES: ::libc::c_uint = 5;
 
 pub const NSEC_PER_USEC: ::libc::c_ulonglong = 1000;
-pub const USEC_PER_SEC: ::libc::c_ulonglong = 1000000;
-pub const NSEC_PER_SEC: ::libc::c_ulonglong = 1000000000;
-pub const NSEC_PER_MSEC: ::libc::c_ulonglong = 1000000;
+pub const USEC_PER_SEC: ::libc::c_ulonglong = 1_000_000;
+pub const NSEC_PER_SEC: ::libc::c_ulonglong = 1_000_000_000;
+pub const NSEC_PER_MSEC: ::libc::c_ulonglong = 1_000_000;
 
 #[allow(non_snake_case)]
 pub fn BAD_MACH_TIMESPEC(t: mach_timespec) -> bool {

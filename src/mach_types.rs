@@ -86,13 +86,13 @@ pub const CLOCK_NULL: ::libc::clock_t = 0;
 pub const UND_SERVER_NULL: UNDServerRef = 0;
 
 // <sys/_types.h>: typedef	unsigned char	__darwin_uuid_t[16];
-pub type uuid_t = [::libc::c_uchar; 16usize];
+pub type uuid_t = [::libc::c_uchar; 16];
 
 // <sys/_types/_fsid_t.h>
 #[repr(C)]
 #[derive(Debug, Default, Copy, Clone, Hash, PartialOrd, PartialEq)]
 pub struct fsid {
-    pub val: [i32; 2usize],
+    pub val: [i32; 2],
 }
 pub type fsid_t = fsid;
 

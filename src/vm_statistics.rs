@@ -8,7 +8,7 @@ pub type vm_statistics_data_t = vm_statistics;
 #[cfg(feature = "deprecated")]
 pub type pmap_statistics_t = *mut pmap_statistics;
 
-pub const VM_PAGE_QUERY_PAGE_PRESENT: integer_t = (1 << 0);
+pub const VM_PAGE_QUERY_PAGE_PRESENT: integer_t = 1;
 pub const VM_PAGE_QUERY_PAGE_FICTITIOUS: integer_t = (1 << 1);
 pub const VM_PAGE_QUERY_PAGE_REF: integer_t = (1 << 2);
 pub const VM_PAGE_QUERY_PAGE_DIRTY: integer_t = (1 << 3);
