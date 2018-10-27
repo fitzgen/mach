@@ -26,3 +26,6 @@ use_std = [ "libc/use_std" ]
 unstable = []
 # Enables deprecated and removed APIs.
 deprecated = []
+
+[workspace]
+members = ["mach-test"]
