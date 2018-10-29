@@ -78,28 +78,28 @@ matrix:
       osx_image: xcode6.4
 
     # x86_64-apple-ios
-    - name: "x86_64-apple-ios - Rust stable 1.18.0 - xcode10 - no run tests"
-      env: TARGET=x86_64-apple-ios NORUN=1
+    - name: "x86_64-apple-ios - Rust stable 1.18.0 - xcode10 - no run/ffi tests"
+      env: TARGET=x86_64-apple-ios NORUN=1 NOCTEST=1
       rust: 1.18.0
       os: osx
       osx_image: xcode10
-    - name: "x86_64-apple-ios - Rust beta - xcode10 - no run tests"
-      env: TARGET=x86_64-apple-ios NORUN=1
+    - name: "x86_64-apple-ios - Rust beta - xcode10 - no run/ffi tests"
+      env: TARGET=x86_64-apple-ios NORUN=1 NOCTEST=1
       rust: beta
       os: osx
       osx_image: xcode10
-    - name: "x86_64-apple-ios - Rust nightly - xcode10 - no run tests"
-      env: TARGET=x86_64-apple-ios NORUN=1
+    - name: "x86_64-apple-ios - Rust nightly - xcode10 - no run/ffi tests"
+      env: TARGET=x86_64-apple-ios NORUN=1 NOCTEST=1
       rust: nightly
       os: osx
       osx_image: xcode10
-    - name: "x86_64-apple-ios - Rust nightly - xcode9.4 - no run tests"
-      env: TARGET=x86_64-apple-ios NORUN=1
+    - name: "x86_64-apple-ios - Rust nightly - xcode9.4 - no run/ffi tests"
+      env: TARGET=x86_64-apple-ios NORUN=1 NOCTEST=1
       rust: nightly
       os: osx
       osx_image: xcode9.4
-    - name: "x86_64-apple-ios - Rust nightly - xcode8.3 - no run tests"
-      env: TARGET=x86_64-apple-ios NORUN=1
+    - name: "x86_64-apple-ios - Rust nightly - xcode8.3 - no run/ffi tests"
+      env: TARGET=x86_64-apple-ios NORUN=1 NOCTEST=1
       rust: nightly
       os: osx
       osx_image: xcode8.3
@@ -114,29 +114,24 @@ matrix:
       os: osx
       osx_image: xcode6.4
 
-    # i386-apple-ios
-    - name: "i386-apple-ios - Rust stable 1.18.0 - xcode10 - no run tests"
-      env: TARGET=i386-apple-ios NORUN=1
+    # i386-apple-ios (deprecated in xcode10)
+    - name: "i386-apple-ios - Rust stable 1.18.0 - xcode9.4 - no run/ffi tests"
+      env: TARGET=i386-apple-ios NORUN=1 NOCTEST=1
       rust: 1.18.0
       os: osx
-      osx_image: xcode10
-    - name: "i386-apple-ios - Rust beta - xcode10 - no run tests"
-      env: TARGET=i386-apple-ios NORUN=1
+      osx_image: xcode9.4
+    - name: "i386-apple-ios - Rust beta - xcode9.4 - no run/ffi tests"
+      env: TARGET=i386-apple-ios NORUN=1 NOCTEST=1
       rust: beta
       os: osx
-      osx_image: xcode10
-    - name: "i386-apple-ios - Rust nightly - xcode10 - no run tests"
-      env: TARGET=i386-apple-ios NORUN=1
-      rust: nightly
-      os: osx
-      osx_image: xcode10
-    - name: "i386-apple-ios - Rust nightly - xcode9.4 - no run tests"
-      env: TARGET=i386-apple-ios NORUN=1
+      osx_image: xcode9.4
+    - name: "i386-apple-ios - Rust nightly - xcode9.4 - no run/ffi tests"
+      env: TARGET=i386-apple-ios NORUN=1 NOCTEST=1
       rust: nightly
       os: osx
       osx_image: xcode9.4
-    - name: "i386-apple-ios - Rust nightly - xcode8.3 - no run tests"
-      env: TARGET=i386-apple-ios NORUN=1
+    - name: "i386-apple-ios - Rust nightly - xcode8.3 - no run/ffi tests"
+      env: TARGET=i386-apple-ios NORUN=1 NOCTEST=1
       rust: nightly
       os: osx
       osx_image: xcode8.3
