@@ -17,16 +17,16 @@ would have **undefined behavior**.
 
 The following table describes the current CI set-up:
 
-| Target                | Min. Rust |   XCode   | build | ctest | run |
-|-----------------------|-----------|-----------|-------|-------|-----|
-| `x86_64-apple-darwin` |  1.13.0   | 6.4 - 9.4 | ✓     | ✓     | ✓   | 
-| `i686-apple-darwin`   |  1.13.0   | 6.4 - 9.4 | ✓     | ✓     | ✓   |
-| `i386-apple-ios`      |  1.13.0   | 6.4 - 9.2 | ✓     | ✓ [0] | -   |
-| `x86_64-apple-ios`    |  1.13.0   | 6.4 - 9.2 | ✓     | ✓ [0] | -   |
-| `armv7-apple-ios`     |  nightly  | 6.4 - 9.4 | ✓     | -     | -   |
-| `aarch64-apple-ios`   |  nightly  | 6.4 - 9.4 | ✓     | -     | -   |
+| Target                | Min. Rust | XCode         | build | ctest | run |
+|-----------------------|-----------|---------------|-------|-------|-----|
+| `x86_64-apple-darwin` | 1.13.0    | 6.4 - 10.0    | ✓     | ✓     | ✓   |
+| `i686-apple-darwin`   | 1.13.0    | 6.4 - 10.0    | ✓     | ✓     | ✓   |
+| `i386-apple-ios`      | 1.13.0    | 6.4 - 9.4 [0] | ✓     | -     | -   |
+| `x86_64-apple-ios`    | 1.13.0    | 6.4 - 10.0    | ✓     | -     | -   |
+| `armv7-apple-ios`     | nightly   | 6.4 - 10.0    | ✓     | -     | -   |
+| `aarch64-apple-ios`   | nightly   | 6.4 - 10.0    | ✓     | -     | -   |
 
-[0] `ctest` is only run on iOS for XCode 8.3 version and newer.
+[0] `i386-apple-ios` is deprecated in XCode 10.0.
 
 [travis_ci]: https://travis-ci.org/fitzgen/mach
 [travis_ci_badge]: https://travis-ci.org/fitzgen/mach.png?branch=master
