@@ -47,6 +47,7 @@ grep -q "use_std" build_std.txt
 # Runs mach's run-time tests:
 if [ -z "$NORUN" ]; then
     cargo test --target "${TARGET}" -vv
+    cargo test --target "${TARGET}" -vv --features deprecated
     cargo test --no-default-features --target "${TARGET}" -vv
 fi
 
