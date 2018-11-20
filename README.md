@@ -1,7 +1,8 @@
 [![Build Status][travis_ci_badge]][travis_ci] [![Latest Version]][crates.io] [![docs]][docs.rs]
 
 A Rust interface to the **user-space** API of the Mach 3.0 kernel exposed in
-`/usr/include/mach` that underlies macOS.
+`/usr/include/mach` that underlies macOS and is linked via `libSystem` (and
+`libsystem_kernel`).
 
 This library does not expose the **kernel-space** API of the Mach 3.0 kernel
 exposed in
@@ -12,6 +13,27 @@ kernel extensions you have to use something else. The user-space kernel API is
 often API-incompatible with the kernel space one, and even in the cases where
 they match, they are sometimes ABI incompatible such that using this library
 would have **undefined behavior**.
+
+# Usage
+
+Add the following to your `Cargo.toml` to conditionally include mach on those
+platforms that support it.
+
+```toml
+[target.'cfg(any(target_os = "macos", target_os = "ios"))'.dependencies.mach]
+version = "0.3"
+```
+
+The following crate features are available:
+
+* **use_std** (enabled by default): compiles the crate with `libstd` support.
+* **unstable** (disabled by default): uses `unstable` features. Some of the APIs
+  in the crate require unstable features for correctness. These APIs are only
+  available on nightly.
+* **deprecated** (disabled by default): exposes deprecated APIs that have been
+  removed from the latest versions of the MacOS SDKs. The behavior of using
+  these APIs on MacOS versions that do not support them is undefined (hopefully
+  a linker error).
 
 # Platform support
 

@@ -34,16 +34,8 @@ pub const TASK_DEBUG_INFO_INTERNAL: ::libc::c_uint = 29;
 pub type task_flavor_t = natural_t;
 pub type task_info_t = *mut integer_t;
 
-#[repr(C)]
-#[cfg_attr(feature = "unstable", repr(packed(4)))]
-#[cfg_attr(
-    not(feature = "unstable"),
-    deprecated(
-        since = "0.2.3",
-        note = "requires the unstable feature to avoid undefined behavior"
-    )
-)]
-#[cfg_attr(not(feature = "unstable"), allow(deprecated))]
+#[cfg(feature = "unstable")]
+#[repr(C, packed(4))]
 #[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct task_dyld_info {
     pub all_image_info_addr: mach_vm_address_t,

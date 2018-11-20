@@ -11,11 +11,18 @@ use vm_behavior::vm_behavior_t;
 use vm_inherit::vm_inherit_t;
 use vm_prot::vm_prot_t;
 use vm_purgable::vm_purgable_t;
+use vm_region::{
+    vm_page_info_flavor_t, vm_page_info_t, vm_region_flavor_t, vm_region_info_t,
+    vm_region_recurse_info_t,
+};
 use vm_sync::vm_sync_t;
-use vm_types::*;
+use vm_types::{
+    integer_t, mach_vm_address_t, mach_vm_offset_t, mach_vm_size_t, natural_t, vm_map_t,
+    vm_offset_t, vm_size_t,
+};
 
-#[cfg_attr(not(feature = "unstable"), allow(deprecated))]
-use vm_region::*;
+#[cfg(feature = "unstable")]
+use vm_region::mach_vm_read_entry_t;
 
 extern "C" {
     pub fn mach_vm_allocate(
@@ -54,14 +61,7 @@ extern "C" {
         dataCnt: *mut mach_msg_type_number_t,
     ) -> kern_return_t;
 
-    #[cfg_attr(
-        not(feature = "unstable"),
-        deprecated(
-            since = "0.2.3",
-            note = "requires the `unstable` feature to avoid undefined behavior"
-        )
-    )]
-    #[cfg_attr(not(feature = "unstable"), allow(deprecated))]
+    #[cfg(feature = "unstable")]
     pub fn mach_vm_read_list(
         target_task: vm_task_entry_t,
         data_list: mach_vm_read_entry_t,
@@ -202,14 +202,10 @@ extern "C" {
 
 #[cfg(test)]
 mod tests {
-    use core::mem;
-    use kern_return::*;
-    use traps::*;
-    use vm::*;
-    use vm_prot::*;
-    use vm_region::*;
-    use vm_statistics::*;
-    use vm_types::*;
+    use super::*;
+    use kern_return::KERN_SUCCESS;
+    use traps::mach_task_self;
+    use vm_statistics::VM_FLAGS_ANYWHERE;
 
     #[test]
     fn mach_vm_allocate_sanity() {
@@ -226,9 +222,12 @@ mod tests {
         }
     }
 
-    #[cfg_attr(not(feature = "unstable"), allow(deprecated))]
+    #[cfg(feature = "unstable")]
     #[test]
     fn mach_vm_region_sanity() {
+        use core::mem;
+        use vm_prot::{VM_PROT_EXECUTE, VM_PROT_READ};
+        use vm_region::{vm_region_basic_info_64, VM_REGION_BASIC_INFO_64};
         unsafe {
             let mut size = 0x10;
             let mut object_name = 0;
