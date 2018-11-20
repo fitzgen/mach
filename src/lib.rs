@@ -12,6 +12,9 @@
     )
 )]
 
+#[cfg(not(any(target_os = "macos", target_os = "ios")))]
+compile_error!("mach requires MacOSX or iOS");
+
 #[cfg(feature = "use_std")]
 extern crate core;
 

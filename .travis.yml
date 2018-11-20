@@ -3,6 +3,14 @@ language: rust
 matrix:
   fast_finish: true
   include:
+    # x86_64-unknown-linux-gnu
+    - name: "x86_64-unknown-linux-gnu - fail"
+      env: TARGET=x86_64-unknown-linux-gnu
+      os: linux
+      rust: nightly
+      install: true
+      script: ./ci/build_fail.sh
+
     # x86_64-apple-darwin
     - name: "x86_64-apple-darwin - Rust stable 1.18.0 - xcode10"
       env: TARGET=x86_64-apple-darwin
