@@ -17,36 +17,43 @@ matrix:
       rust: 1.18.0
       os: osx
       osx_image: xcode10
+      install: true
     - name: "x86_64-apple-darwin - Rust beta - xcode10"
       env: TARGET=x86_64-apple-darwin
       rust: beta
       os: osx
       osx_image: xcode10
+      install: true
     - name: "x86_64-apple-darwin - Rust nightly - xcode10"
       env: TARGET=x86_64-apple-darwin
       rust: nightly
       os: osx
       osx_image: xcode10
+      install: true
     - name: "x86_64-apple-darwin - Rust nightly - xcode9.4"
       env: TARGET=x86_64-apple-darwin
       rust: nightly
       os: osx
       osx_image: xcode9.4
+      install: true
     - name: "x86_64-apple-darwin - Rust nightly - xcode8.3"
       env: TARGET=x86_64-apple-darwin
       rust: nightly
       os: osx
       osx_image: xcode8.3
+      install: true
     - name: "x86_64-apple-darwin - Rust nightly - xcode7.3"
       env: TARGET=x86_64-apple-darwin
       rust: nightly
       os: osx
       osx_image: xcode7.3
+      install: true
     - name: "x86_64-apple-darwin - Rust nightly - xcode6.4"
       env: TARGET=x86_64-apple-darwin
       rust: nightly
       os: osx
       osx_image: xcode6.4
+      install: true
 
     # i686-apple-darwin
     - name: "i686-apple-darwin - Rust stable 1.18.0 - xcode10"
@@ -237,5 +244,10 @@ matrix:
       rust: nightly
       install: rustup component add clippy-preview
       script: cargo clippy --all -- -D clippy::pedantic
+    - name: "Shellcheck"
+      script:
+        - shellcheck --version
+        - shellcheck ci/*.sh
 
+install: rustup target add "${TARGET}"
 script: ci/run.sh
