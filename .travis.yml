@@ -238,15 +238,20 @@ matrix:
     # Tooling
     - name: "rustfmt"
       rust: nightly
+      os: osx
+      osx_image: xcode10
       install: rustup component add rustfmt-preview
       script: cargo fmt --all -- --check
     - name: "clippy"
       rust: nightly
+      os: osx
+      osx_image: xcode10
       install: rustup component add clippy-preview
       script:
         - cargo clippy --all -- -D clippy::pedantic
         - cargo clippy --all --features=unstable -- -D clippy::pedantic
     - name: "Shellcheck"
+      install: true
       script:
         - shellcheck --version
         - shellcheck ci/*.sh
