@@ -196,8 +196,9 @@ fn main() {
             "mach_task_self" | "current_task" => true,
 
             // These are not available in previous MacOSX versions:
-            "mach_continuous_time" |
-            "mach_continuous_approximate_time" if xcode < Xcode(8, 0) => true,
+            "mach_continuous_time" | "mach_continuous_approximate_time" if xcode < Xcode(8, 0) => {
+                true
+            }
             _ => false,
         }
     });
