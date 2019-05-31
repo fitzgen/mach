@@ -8,6 +8,7 @@ repository = "https://github.com/fitzgen/mach"
 readme = "README.md"
 keywords = ["kernel", "macos", "darwin"]
 categories = ["api-bindings", "external-ffi-bindings", "no-std", "os"]
+edition = "2015"
 
 [badges]
 travis-ci = { repository = "fitzgen/mach" }
@@ -19,10 +20,8 @@ maintenance = { status = "passively-maintained" }
 libc = { version = "0.2", default-features = false }
 
 [features]
-default = [ "use_std" ]
-use_std = [ "libc/use_std" ]
-# Enables unstable / nightly-only features
-unstable = []
+default = [ "std" ]
+std = [ "libc/std" ]
 # Enables deprecated and removed APIs.
 deprecated = []
 

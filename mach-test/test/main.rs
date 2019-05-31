@@ -15,6 +15,7 @@ use mach::exception_types::*;
 use mach::kern_return::*;
 use mach::mach_init::*;
 use mach::mach_port::*;
+use mach::mach_time::*;
 use mach::mach_types::*;
 use mach::memory_object_types::*;
 use mach::message::*;

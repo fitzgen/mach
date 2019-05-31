@@ -12,9 +12,9 @@ matrix:
       script: ./ci/build_fail.sh
 
     # x86_64-apple-darwin
-    - name: "x86_64-apple-darwin - Rust stable 1.18.0 - xcode10"
+    - name: "x86_64-apple-darwin - Rust stable 1.33.0 - xcode10"
       env: TARGET=x86_64-apple-darwin
-      rust: 1.18.0
+      rust: 1.33.0
       os: osx
       osx_image: xcode10
       install: true
@@ -56,9 +56,9 @@ matrix:
       install: true
 
     # i686-apple-darwin
-    - name: "i686-apple-darwin - Rust stable 1.18.0 - xcode10"
+    - name: "i686-apple-darwin - Rust stable 1.33.0 - xcode10"
       env: TARGET=i686-apple-darwin
-      rust: 1.18.0
+      rust: 1.33.0
       os: osx
       osx_image: xcode10
     - name: "i686-apple-darwin - Rust beta - xcode10"
@@ -93,9 +93,9 @@ matrix:
       osx_image: xcode6.4
 
     # x86_64-apple-ios
-    - name: "x86_64-apple-ios - Rust stable 1.18.0 - xcode10 - no run/ffi tests"
+    - name: "x86_64-apple-ios - Rust stable 1.33.0 - xcode10 - no run/ffi tests"
       env: TARGET=x86_64-apple-ios NORUN=1 NOCTEST=1
-      rust: 1.18.0
+      rust: 1.33.0
       os: osx
       osx_image: xcode10
     - name: "x86_64-apple-ios - Rust beta - xcode10 - no run/ffi tests"
@@ -130,9 +130,9 @@ matrix:
       osx_image: xcode6.4
 
     # i386-apple-ios (deprecated in xcode10)
-    - name: "i386-apple-ios - Rust stable 1.18.0 - xcode9.4 - no run/ffi tests"
+    - name: "i386-apple-ios - Rust stable 1.33.0 - xcode9.4 - no run/ffi tests"
       env: TARGET=i386-apple-ios NORUN=1 NOCTEST=1
-      rust: 1.18.0
+      rust: 1.33.0
       os: osx
       osx_image: xcode9.4
     - name: "i386-apple-ios - Rust beta - xcode9.4 - no run/ffi tests"
@@ -162,9 +162,9 @@ matrix:
       osx_image: xcode6.4
 
     # aarch64-apple-ios
-    - name: "aarch64-apple-ios - Rust stable 1.18.0 - xcode10 - no run/ffi tests"
+    - name: "aarch64-apple-ios - Rust stable 1.33.0 - xcode10 - no run/ffi tests"
       env: TARGET=aarch64-apple-ios NORUN=1 NOCTEST=1
-      rust: 1.18.0
+      rust: 1.33.0
       os: osx
       osx_image: xcode10
     - name: "aarch64-apple-ios - Rust beta - xcode10 - no run/ffi tests"
@@ -199,9 +199,9 @@ matrix:
       osx_image: xcode6.4
 
     # armv7-apple-ios
-    - name: "armv7-apple-ios - Rust stable 1.18.0 - xcode10 - no run/ffi tests"
+    - name: "armv7-apple-ios - Rust stable 1.33.0 - xcode10 - no run/ffi tests"
       env: TARGET=armv7-apple-ios NORUN=1 NOCTEST=1
-      rust: 1.18.0
+      rust: 1.33.0
       os: osx
       osx_image: xcode10
     - name: "armv7-apple-ios - Rust beta - xcode10 - no run/ffi tests"
