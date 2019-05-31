@@ -1,5 +1,4 @@
 //! This module corresponds to `mach/mach_traps.h`.
-
 use kern_return::kern_return_t;
 use port::{mach_port_name_t, mach_port_t};
 

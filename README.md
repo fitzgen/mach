@@ -26,10 +26,7 @@ version = "0.3"
 
 The following crate features are available:
 
-* **use_std** (enabled by default): compiles the crate with `libstd` support.
-* **unstable** (disabled by default): uses `unstable` features. Some of the APIs
-  in the crate require unstable features for correctness. These APIs are only
-  available on nightly.
+* **std** (enabled by default): compiles the crate with `libstd` support.
 * **deprecated** (disabled by default): exposes deprecated APIs that have been
   removed from the latest versions of the MacOS SDKs. The behavior of using
   these APIs on MacOS versions that do not support them is undefined (hopefully
@@ -41,10 +38,10 @@ The following table describes the current CI set-up:
 
 | Target                | Min. Rust | XCode         | build | ctest | run |
 |-----------------------|-----------|---------------|-------|-------|-----|
-| `x86_64-apple-darwin` | 1.13.0    | 6.4 - 10.0    | ✓     | ✓     | ✓   |
-| `i686-apple-darwin`   | 1.13.0    | 6.4 - 10.0    | ✓     | ✓     | ✓   |
-| `i386-apple-ios`      | 1.13.0    | 6.4 - 9.4 [0] | ✓     | -     | -   |
-| `x86_64-apple-ios`    | 1.13.0    | 6.4 - 10.0    | ✓     | -     | -   |
+| `x86_64-apple-darwin` | 1.33.0    | 6.4 - 10.0    | ✓     | ✓     | ✓   |
+| `i686-apple-darwin`   | 1.33.0    | 6.4 - 10.0    | ✓     | ✓     | ✓   |
+| `i386-apple-ios`      | 1.33.0    | 6.4 - 9.4 [0] | ✓     | -     | -   |
+| `x86_64-apple-ios`    | 1.33.0    | 6.4 - 10.0    | ✓     | -     | -   |
 | `armv7-apple-ios`     | nightly   | 6.4 - 10.0    | ✓     | -     | -   |
 | `aarch64-apple-ios`   | nightly   | 6.4 - 10.0    | ✓     | -     | -   |
 

@@ -1,7 +1,6 @@
 //! This module corresponds to `mach/_structs.h`.
 
-use core::mem;
-
+use mem;
 use message::mach_msg_type_number_t;
 
 #[repr(C)]

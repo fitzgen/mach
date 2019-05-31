@@ -312,7 +312,8 @@ fn main() {
         | "dyld_kernel_image_info"
         | "dyld_kernel_process_info"
         | "mach_timespec"
-        | "mach_vm_read_entry" => format!("struct {}", ty),
+        | "mach_vm_read_entry"
+        | "mach_timebase_info" => format!("struct {}", ty),
         _ if is_struct => format!("{}", ty),
         _ => ty.to_string(),
     });

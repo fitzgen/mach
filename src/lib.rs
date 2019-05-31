@@ -1,24 +1,22 @@
 #![allow(non_camel_case_types)]
 #![allow(non_upper_case_globals)]
-#![cfg_attr(not(feature = "use_std"), no_std)]
-#![cfg_attr(feature = "unstable", feature(repr_packed))]
-#![cfg_attr(
-    feature = "cargo-clippy",
-    allow(
-        clippy::stutter,
-        clippy::cast_sign_loss,
-        clippy::cast_possible_truncation,
-        clippy::trivially_copy_pass_by_ref
-    )
+#![cfg_attr(not(feature = "std"), no_std)]
+#![allow(
+    clippy::stutter,
+    clippy::cast_sign_loss,
+    clippy::cast_possible_truncation,
+    clippy::trivially_copy_pass_by_ref
 )]
 
 #[cfg(not(any(target_os = "macos", target_os = "ios")))]
 compile_error!("mach requires MacOSX or iOS");
 
-#[cfg(feature = "use_std")]
+#[cfg(feature = "std")]
 extern crate core;
 
 extern crate libc;
+
+use core::mem;
 
 pub mod boolean;
 pub mod bootstrap;
@@ -33,6 +31,7 @@ pub mod exception_types;
 pub mod kern_return;
 pub mod mach_init;
 pub mod mach_port;
+pub mod mach_time;
 pub mod mach_types;
 pub mod memory_object_types;
 pub mod message;

@@ -11,6 +11,7 @@ use vm_behavior::vm_behavior_t;
 use vm_inherit::vm_inherit_t;
 use vm_prot::vm_prot_t;
 use vm_purgable::vm_purgable_t;
+use vm_region::mach_vm_read_entry_t;
 use vm_region::{
     vm_page_info_flavor_t, vm_page_info_t, vm_region_flavor_t, vm_region_info_t,
     vm_region_recurse_info_t,
@@ -20,9 +21,6 @@ use vm_types::{
     integer_t, mach_vm_address_t, mach_vm_offset_t, mach_vm_size_t, natural_t, vm_map_t,
     vm_offset_t, vm_size_t,
 };
-
-#[cfg(feature = "unstable")]
-use vm_region::mach_vm_read_entry_t;
 
 extern "C" {
     pub fn mach_vm_allocate(
@@ -61,7 +59,6 @@ extern "C" {
         dataCnt: *mut mach_msg_type_number_t,
     ) -> kern_return_t;
 
-    #[cfg(feature = "unstable")]
     pub fn mach_vm_read_list(
         target_task: vm_task_entry_t,
         data_list: mach_vm_read_entry_t,
@@ -222,10 +219,9 @@ mod tests {
         }
     }
 
-    #[cfg(feature = "unstable")]
     #[test]
     fn mach_vm_region_sanity() {
-        use core::mem;
+        use mem;
         use vm_prot::{VM_PROT_EXECUTE, VM_PROT_READ};
         use vm_region::{vm_region_basic_info_64, VM_REGION_BASIC_INFO_64};
         unsafe {

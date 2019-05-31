@@ -1,8 +1,7 @@
 //! This module roughly corresponds to `mach/vm_region.h`.
 
-use core::mem;
-
 use boolean::boolean_t;
+use mem;
 use memory_object_types::{memory_object_offset_t, vm_object_id_t};
 use message::mach_msg_type_number_t;
 use vm_behavior::vm_behavior_t;
@@ -10,7 +9,7 @@ use vm_inherit::vm_inherit_t;
 use vm_prot::vm_prot_t;
 use vm_types::{mach_vm_address_t, mach_vm_size_t};
 
-pub type vm32_object_id_t = ::libc::uint32_t;
+pub type vm32_object_id_t = u32;
 
 pub type vm_region_info_t = *mut ::libc::c_int;
 pub type vm_region_info_64_t = *mut ::libc::c_int;
@@ -19,9 +18,7 @@ pub type vm_region_recurse_info_64_t = *mut ::libc::c_int;
 pub type vm_region_flavor_t = ::libc::c_int;
 pub type vm_region_info_data_t = [::libc::c_int; VM_REGION_INFO_MAX as usize];
 
-#[cfg(feature = "unstable")]
 pub type vm_region_basic_info_64_t = *mut vm_region_basic_info_64;
-#[cfg(feature = "unstable")]
 pub type vm_region_basic_info_data_64_t = vm_region_basic_info_64;
 pub type vm_region_basic_info_t = *mut vm_region_basic_info;
 pub type vm_region_basic_info_data_t = vm_region_basic_info;
@@ -31,19 +28,14 @@ pub type vm_region_top_info_t = *mut vm_region_top_info;
 pub type vm_region_top_info_data_t = vm_region_top_info;
 pub type vm_region_submap_info_t = *mut vm_region_submap_info;
 pub type vm_region_submap_info_data_t = vm_region_submap_info;
-#[cfg(feature = "unstable")]
 pub type vm_region_submap_info_64_t = *mut vm_region_submap_info_64;
-#[cfg(feature = "unstable")]
 pub type vm_region_submap_info_data_64_t = vm_region_submap_info_64;
-#[cfg(feature = "unstable")]
 pub type vm_region_submap_short_info_64_t = *mut vm_region_submap_short_info_64;
-#[cfg(feature = "unstable")]
 pub type vm_region_submap_short_info_data_64_t = vm_region_submap_short_info_64;
 pub type vm_page_info_t = *mut ::libc::c_int;
 pub type vm_page_info_flavor_t = ::libc::c_int;
 pub type vm_page_info_basic_t = *mut vm_page_info_basic;
 pub type vm_page_info_basic_data_t = vm_page_info_basic;
-#[cfg(feature = "unstable")]
 pub type mach_vm_read_entry_t = [mach_vm_read_entry; VM_MAP_ENTRY_MAX as usize];
 
 pub const VM_REGION_INFO_MAX: ::libc::c_int = (1 << 10);
@@ -64,7 +56,6 @@ pub const SM_TRUESHARED: ::libc::c_uchar = 5;
 pub const SM_PRIVATE_ALIASED: ::libc::c_uchar = 6;
 pub const SM_SHARED_ALIASED: ::libc::c_uchar = 7;
 
-#[cfg(feature = "unstable")]
 #[repr(C, packed(4))]
 #[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_region_basic_info_64 {
@@ -78,7 +69,6 @@ pub struct vm_region_basic_info_64 {
     pub user_wired_count: ::libc::c_ushort,
 }
 
-#[cfg(feature = "unstable")]
 impl vm_region_basic_info_64 {
     pub fn count() -> mach_msg_type_number_t {
         (mem::size_of::<Self>() / mem::size_of::<::libc::c_int>()) as mach_msg_type_number_t
@@ -93,7 +83,7 @@ pub struct vm_region_basic_info {
     pub inheritance: vm_inherit_t,
     pub shared: boolean_t,
     pub reserved: boolean_t,
-    pub offset: ::libc::uint32_t,
+    pub offset: u32,
     pub behavior: vm_behavior_t,
     pub user_wired_count: ::libc::c_ushort,
 }
@@ -148,7 +138,7 @@ pub struct vm_region_submap_info {
     pub protection: vm_prot_t,
     pub max_protection: vm_prot_t,
     pub inheritance: vm_inherit_t,
-    pub offset: ::libc::uint32_t,
+    pub offset: u32,
     pub user_tag: ::libc::c_uint,
     pub pages_resident: ::libc::c_uint,
     pub pages_shared_now_private: ::libc::c_uint,
@@ -170,7 +160,6 @@ impl vm_region_submap_info {
     }
 }
 
-#[cfg(feature = "unstable")]
 #[repr(C, packed(4))]
 #[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_region_submap_info_64 {
@@ -194,14 +183,12 @@ pub struct vm_region_submap_info_64 {
     pub pages_reusable: ::libc::c_uint,
 }
 
-#[cfg(feature = "unstable")]
 impl vm_region_submap_info_64 {
     pub fn count() -> mach_msg_type_number_t {
         (mem::size_of::<Self>() / mem::size_of::<::libc::c_int>()) as mach_msg_type_number_t
     }
 }
 
-#[cfg(feature = "unstable")]
 #[repr(C, packed(4))]
 #[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct vm_region_submap_short_info_64 {
@@ -220,7 +207,6 @@ pub struct vm_region_submap_short_info_64 {
     pub user_wired_count: ::libc::c_ushort,
 }
 
-#[cfg(feature = "unstable")]
 impl vm_region_submap_short_info_64 {
     pub fn count() -> mach_msg_type_number_t {
         (mem::size_of::<Self>() / mem::size_of::<::libc::c_int>()) as mach_msg_type_number_t
@@ -244,7 +230,6 @@ impl vm_page_info_basic {
     }
 }
 
-#[cfg(feature = "unstable")]
 #[repr(C, packed(4))]
 #[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct mach_vm_read_entry {

@@ -1,6 +1,7 @@
 //! This module roughly corresponds to `mach/task_info.h`.
 
 use vm_types::{integer_t, mach_vm_address_t, mach_vm_size_t, natural_t};
+
 pub const TASK_INFO_MAX: ::libc::c_uint = 1024;
 pub const TASK_BASIC_INFO_32: ::libc::c_uint = 4;
 pub const TASK_BASIC2_INFO_32: ::libc::c_uint = 6;
@@ -34,7 +35,6 @@ pub const TASK_DEBUG_INFO_INTERNAL: ::libc::c_uint = 29;
 pub type task_flavor_t = natural_t;
 pub type task_info_t = *mut integer_t;
 
-#[cfg(feature = "unstable")]
 #[repr(C, packed(4))]
 #[derive(Copy, Clone, Debug, Default, Hash, PartialOrd, PartialEq, Eq, Ord)]
 pub struct task_dyld_info {

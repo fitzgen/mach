@@ -5,7 +5,7 @@ authors = ["gnzlbg <gonzalobg88@gmail.com>"]
 build = "build.rs"
 
 [dependencies]
-mach = { path = "..", features = ["unstable"] }
+mach = { path = ".." }
 libc = "0.2"
 
 [build-dependencies]

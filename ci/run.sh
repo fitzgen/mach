@@ -36,11 +36,11 @@ cargo build --target "${TARGET}" -vv 2>&1 | tee build_std.txt
 cargo build --no-default-features --target "${TARGET}" -vv 2>&1 | tee build_no_std.txt
 
 # Check that the no-std builds are not linked against a libc with default
-# features or the use_std feature enabled:
+# features or the std feature enabled:
 grep -q "default" build_std.txt
-grep -q "use_std" build_std.txt
+grep -q "std" build_std.txt
 ! grep -q "default" build_no_std.txt
-! grep -q "use_std" build_no_std.txt
+! grep -q "std" build_no_std.txt
 # Make sure that the resulting build contains no std symbols
 ! find target/ -name "*.rlib" -exec nm {} \; | grep "std"
 
