@@ -44,6 +44,12 @@ fn main() {
 
     let mut cfg = ctest::TestGenerator::new();
 
+    // Older Xcode versions fail with:
+    // error: unknown warning option '-Wno-address-of-packed-member'
+    if xcode.0 < 8 {
+        cfg.flag("-Wno-unknown-warning-option");
+    }
+
     // Include the header files where the C APIs are defined
     cfg.header("mach/boolean.h")
         .header("bootstrap.h")
