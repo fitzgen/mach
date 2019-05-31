@@ -14,6 +14,9 @@ compile_error!("mach requires MacOSX or iOS");
 #[cfg(feature = "std")]
 extern crate core;
 
+#[cfg(feature = "rustc-dep-of-std")]
+extern crate rustc_std_workspace_core as core;
+
 extern crate libc;
 
 use core::mem;
