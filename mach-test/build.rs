@@ -189,11 +189,14 @@ fn main() {
         }
     });
 
-    cfg.skip_fn(|s| {
+    cfg.skip_fn(move |s| {
         match s {
             // mac_task_self and current_tasl are not functions, but macro that map to the
             // mask_task_self_ static variable:
             "mach_task_self" | "current_task" => true,
+
+            // These are not available in previous MacOSX versions:
+            "mach_continuous_time" if xcode < Xcode(8, 0) => true,
             _ => false,
         }
     });
