@@ -32,13 +32,10 @@ esac
 
 # Build w/o std
 cargo clean
-cargo build --target "${TARGET}" -vv 2>&1 | tee build_std.txt
 cargo build --no-default-features --target "${TARGET}" -vv 2>&1 | tee build_no_std.txt
 
 # Check that the no-std builds are not linked against a libc with default
 # features or the std feature enabled:
-grep -q "default" build_std.txt
-grep -q "std" build_std.txt
 ! grep -q "default" build_no_std.txt
 ! grep -q "std" build_no_std.txt
 # Make sure that the resulting build contains no std symbols
