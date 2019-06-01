@@ -6,7 +6,7 @@
 #![cfg_attr(feature = "rustc-dep-of-std", no_core)]
 #![cfg_attr(not(feature = "rustc-dep-of-std"), no_std)]
 #![allow(
-    clippy::stutter,
+    clippy::module_name_repetitions,
     clippy::cast_sign_loss,
     clippy::cast_possible_truncation,
     clippy::trivially_copy_pass_by_ref
