@@ -26,7 +26,6 @@ version = "0.3"
 
 The following crate features are available:
 
-* **std** (enabled by default): compiles the crate with `libstd` support.
 * **deprecated** (disabled by default): exposes deprecated APIs that have been
   removed from the latest versions of the MacOS SDKs. The behavior of using
   these APIs on MacOS versions that do not support them is undefined (hopefully
