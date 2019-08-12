@@ -46,10 +46,27 @@ The following table describes the current CI set-up:
 
 [0] `i386-apple-ios` is deprecated in XCode 10.0.
 
+# License
+
+This project is licensed under either of
+
+* A 2-clause BSD License ([LICENSE-BSD](LICENSE-BSD)), or
+* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or
+  http://www.apache.org/licenses/LICENSE-2.0)
+* MIT license ([LICENSE-MIT](LICENSE-MIT) or
+  http://opensource.org/licenses/MIT)
+
+at your option.
+
+# Contribution
+
+Unless you explicitly state otherwise, any contribution intentionally submitted
+for inclusion in `mach` by you, as defined in the Apache-2.0 license, shall be
+triple licensed as above, without any additional terms or conditions.
+
 [travis_ci]: https://travis-ci.org/fitzgen/mach
 [travis_ci_badge]: https://travis-ci.org/fitzgen/mach.png?branch=master
 [crates.io]: https://crates.io/crates/mach
 [Latest Version]: https://img.shields.io/crates/v/mach.svg
 [docs]: https://docs.rs/mach/badge.svg
 [docs.rs]: https://docs.rs/mach/
-
