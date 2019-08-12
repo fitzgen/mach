@@ -64,6 +64,16 @@ Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in `mach` by you, as defined in the Apache-2.0 license, shall be
 triple licensed as above, without any additional terms or conditions.
 
+To locally test the library, run:
+
+```
+TARGET=x86_64-apple-darwin TRAVIS_RUST_VERSION=nightly ./ci/run.sh
+```
+
+where you can replace the `TARGET` and `TRAVIS_RUST_VERSION` with the target you
+want to test (e.g. `i686-apple-darwin`) and the Rust version you want to use for
+the tests (e.g. `stable`, `1.33.0`, etc.).
+
 [travis_ci]: https://travis-ci.org/fitzgen/mach
 [travis_ci_badge]: https://travis-ci.org/fitzgen/mach.png?branch=master
 [crates.io]: https://crates.io/crates/mach
