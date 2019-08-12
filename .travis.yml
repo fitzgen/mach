@@ -249,7 +249,6 @@ matrix:
       install: rustup component add clippy-preview
       script:
         - cargo clippy --all -- -D clippy::pedantic
-        - cargo clippy --all --features=unstable -- -D clippy::pedantic
     - name: "Shellcheck"
       install: true
       script:
