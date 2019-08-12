@@ -329,6 +329,12 @@ fn main() {
         _ => ty.to_string(),
     });
 
+    cfg.skip_roundtrip(move |s| match s {
+        // FIXME: TODO
+        "name_t" | "uuid_t" | "vm_region_info_data_t" | "cmd_t" | "mach_vm_read_entry_t" => true,
+        _ => false,
+    });
+
     // Include the directory where the header files are defined
     cfg.include("/usr/include");
 
