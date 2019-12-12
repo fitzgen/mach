@@ -32,3 +32,6 @@ rustc-dep-of-std = ['rustc-std-workspace-core', 'libc/rustc-dep-of-std']
 
 [workspace]
 members = ["mach-test"]
+
+[package.metadata.docs.rs]
+default-target = "x86_64-apple-darwin"
