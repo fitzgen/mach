@@ -38,6 +38,7 @@ pub mod mach_init;
 pub mod mach_port;
 pub mod mach_time;
 pub mod mach_types;
+pub mod mach_host;
 pub mod memory_object_types;
 pub mod message;
 pub mod port;

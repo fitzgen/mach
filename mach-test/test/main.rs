@@ -17,6 +17,7 @@ use mach::mach_init::*;
 use mach::mach_port::*;
 use mach::mach_time::*;
 use mach::mach_types::*;
+use mach::mach_host::*;
 use mach::memory_object_types::*;
 use mach::message::*;
 use mach::port::*;

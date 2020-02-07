@@ -15,9 +15,9 @@ pub struct mach_timespec {
 }
 pub type mach_timespec_t = mach_timespec;
 
-pub const SYSTEM_CLOCK: ::libc::c_uint = 0;
-pub const CALENDAR_CLOCK: ::libc::c_uint = 1;
-pub const REALTIME_CLOCK: ::libc::c_uint = 0;
+pub const SYSTEM_CLOCK: clock_id_t = 0;
+pub const CALENDAR_CLOCK: clock_id_t = 1;
+pub const REALTIME_CLOCK: clock_id_t = 0;
 
 pub const CLOCK_GET_TIME_RES: ::libc::c_uint = 1;
 pub const CLOCK_ALARM_CURRES: ::libc::c_uint = 3;
