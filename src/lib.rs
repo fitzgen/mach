@@ -30,10 +30,11 @@ pub mod clock_priv;
 pub mod clock_reply;
 pub mod clock_types; // TODO: test
 pub mod dyld_kernel;
-// pub mod error; // TODO
+pub mod error;
 pub mod exc;
 pub mod exception_types;
 pub mod kern_return;
+pub mod mach_error;
 pub mod mach_init;
 pub mod mach_port;
 pub mod mach_time;
