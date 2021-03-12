@@ -17,7 +17,13 @@ pub static x86_EXCEPTION_STATE: thread_state_flavor_t = 9;
 pub static x86_DEBUG_STATE32: thread_state_flavor_t = 10;
 pub static x86_DEBUG_STATE64: thread_state_flavor_t = 11;
 pub static x86_DEBUG_STATE: thread_state_flavor_t = 12;
-pub static THREAD_STATE_NONE: thread_state_flavor_t = 13;
 pub static x86_AVX_STATE32: thread_state_flavor_t = 16;
 pub static x86_AVX_STATE64: thread_state_flavor_t = 17;
 pub static x86_AVX_STATE: thread_state_flavor_t = 18;
+
+pub static ARM_THREAD_STATE64: thread_state_flavor_t = 6;
+
+#[cfg(any(target_arch = "x86_64", target_arch = "x86"))]
+pub static THREAD_STATE_NONE: thread_state_flavor_t = 13;
+#[cfg(target_arch = "aarch64")]
+pub static THREAD_STATE_NONE: thread_state_flavor_t = 5;
