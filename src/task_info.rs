@@ -6,7 +6,7 @@ pub const TASK_INFO_MAX: ::libc::c_uint = 1024;
 pub const TASK_BASIC_INFO_32: ::libc::c_uint = 4;
 pub const TASK_BASIC2_INFO_32: ::libc::c_uint = 6;
 pub const TASK_BASIC_INFO_64: ::libc::c_uint = 5;
-#[cfg(target_arch = "x86_64")]
+#[cfg(any(target_arch = "x86_64", target_arch = "aarch64"))]
 pub const TASK_BASIC_INFO: ::libc::c_uint = 5;
 #[cfg(target_arch = "x86")]
 pub const TASK_BASIC_INFO: ::libc::c_uint = 4;

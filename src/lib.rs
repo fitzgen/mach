@@ -40,6 +40,7 @@ pub mod mach_time;
 pub mod mach_types;
 pub mod memory_object_types;
 pub mod message;
+pub mod ndr;
 pub mod port;
 pub mod structs;
 pub mod task;
