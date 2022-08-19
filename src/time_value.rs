@@ -4,7 +4,7 @@ use vm_types::{integer_t};
 
 const TIME_MICROS_MAX: integer_t = 1000000;
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 #[repr(C)]
 #[repr(packed)]
 pub struct time_value {

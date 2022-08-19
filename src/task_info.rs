@@ -28,7 +28,7 @@ pub const TASK_BASIC_INFO_COUNT: mach_msg_type_number_t = 8;
 
 pub const MIG_ARRAY_TOO_LARGE: kern_return_t = -307;
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 #[repr(C)]
 #[repr(packed)]
 pub struct task_basic_info {
@@ -54,7 +54,7 @@ impl task_basic_info {
   }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 #[repr(C)]
 #[repr(packed)]
 pub struct task_events_info {
